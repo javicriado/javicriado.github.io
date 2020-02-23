@@ -1,0 +1,26 @@
+
+:encoding: utf-8
+:lang: es
+:doctype: article
+:imagesdir: ./images
+:figure-caption: Figura
+
+# Javier Criado
+Grupo de Informática Aplicada -- Departamento de Informática -- Universidad de Almería
+:favicon: ./images/favicon.ico
+:source-highlighter: rouge
+
+image:acg.png[ACG,250,200]      image:ual.png[UAL,150,200]
+
+Ingeniería del Software
+
+Desarrollo de Interfaces de Usuario
+
+Integración de Tecnologías y Servicios Informáticos
+
+Planificación y Gestión de Proyectos Informáticos
+
+https://javicriado.github.io/dah[Desarrollo de Aplicaciones Híbridas]
+
+Desarrollo Web Basado en Servicios y Componentes
+
