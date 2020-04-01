@@ -648,7 +648,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div id="toc" class="toc2">
 <div id="toctitle">Tabla de contenidos</div>
 <ul class="sectlevel1">
-<li><a href="#_uso_a_firebase">1. Uso a Firebase</a></li>
+<li><a href="#_uso_de_firebase">1. Uso de Firebase</a></li>
 <li><a href="#_creación_de_un_proyecto_en_firebase">2. Creación de un proyecto en Firebase</a></li>
 <li><a href="#_activación_del_servicio_de_autenticación">3. Activación del servicio de autenticación</a></li>
 <li><a href="#_creación_de_una_base_de_datos">4. Creación de una base de datos</a></li>
@@ -659,7 +659,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <li><a href="#_creación_de_una_página_para_realizar_el_acceso_a_la_aplicación">5.3. Creación de una página para realizar el acceso a la aplicación</a></li>
 <li><a href="#_modificación_del_módulo_de_la_aplicación">5.4. Modificación del módulo de la aplicación</a></li>
 <li><a href="#_creación_de_una_página_para_listar_los_productos">5.5. Creación de una página para listar los productos</a></li>
-<li><a href="#_creación_de_una_página_para_añadir_nuevos_artículos">5.6. Creación de una página para añadir nuevos artículos</a></li>
+<li><a href="#_creación_de_una_página_para_añadir_nuevos_productos">5.6. Creación de una página para añadir nuevos productos</a></li>
 </ul>
 </li>
 <li><a href="#_ejercicio_creación_de_una_aplicación_ionic_con_almacenamiento_y_recuperación_de_datos">6. Ejercicio: Creación de una aplicación Ionic con almacenamiento y recuperación de datos</a></li>
@@ -668,7 +668,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_uso_a_firebase">1. Uso a Firebase</h2>
+<h2 id="_uso_de_firebase">1. Uso de Firebase</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Firebase es un servicio en la nube ofrecido por Google que nos facilita el desarrollo de aplicaciones software. En nuestro caso, para el desarrollo de aplicaciones híbridas lo vamos a utilizar para realizar el proceso de autenticación y para disponer de una base de datos común para los usuarios de nuestra aplicación.</p>
@@ -698,7 +698,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <h2 id="_creación_de_un_proyecto_en_firebase">2. Creación de un proyecto en Firebase</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Para utilizar el servicio de autenticación y disponer de una base de datos, debemos crear un proyecto en Firebase desde la consola (<a href="https://console.firebase.google.com/">enlace</a>.</p>
+<p>Para utilizar el servicio de autenticación y disponer de una base de datos, debemos crear un proyecto en Firebase desde la consola (<a href="https://console.firebase.google.com/">enlace</a>).</p>
 </div>
 <div class="paragraph">
 <p>Una vez que accedamos a la consola con un usuario de Google (se recomienda utilizar el mismo usuario proporcionado por la Universidad de Almería para acceder a los servicios de Google), debemos crear un nuevo proyecto. Durante la creación, podemos habilitar la recogida de estadísticas para Google Analytics.</p>
@@ -1716,7 +1716,7 @@ export class ProductsPageRoutingModule {}</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_creación_de_una_página_para_añadir_nuevos_artículos">5.6. Creación de una página para añadir nuevos artículos</h3>
+<h3 id="_creación_de_una_página_para_añadir_nuevos_productos">5.6. Creación de una página para añadir nuevos productos</h3>
 <div class="paragraph">
 <p>Cuando un usuario autorizado por la aplicación accede por primera vez a su página de productos, comprobará que su lista está vacía. Por ello, el siguiente paso es crear una nueva página que nos permita dar nuevos productos de alta en la base de datos.</p>
 </div>
@@ -1902,11 +1902,11 @@ export class AddProductPageModule {}</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>La página de inicio debe tener dos botones</p>
+<p>La página de inicio debe tener dos botones:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Un botón para acceder a la página de inicio de sesión</p>
+<p>Un botón para acceder a la página de inicio de sesión.</p>
 </li>
 <li>
 <p>Otro botón para acceder a un listado de productos que están a la venta. Dicho listado de productos estarán asociados a un usuario específico. En este listado se mostrará la imagen, el nombre y la descripción, pero no existirá una opción para ver detalles del artículo. Desde la página de este listado no se podrán añadir nuevos productos.</p>
@@ -1930,7 +1930,7 @@ export class AddProductPageModule {}</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-01 19:05:42 +0200
+Last updated 2020-04-01 19:12:55 +0200
 </div>
 </div>
 </body>
