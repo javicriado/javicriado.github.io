@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Máster en Tecnologías y Aplicaciones en Ingeniería Informática&#8201;&#8212;&#8201;UAL">
+<meta name="author" content="Desarrollo de Aplicaciones Híbridas&#8201;&#8212;&#8201;Máster TAII&#8201;&#8212;&#8201;UAL">
 <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-<title>Desarrollo de Aplicaciones Híbridas</title>
+<title>Pruebas en aplicaciones Ionic</title>
 <style>
 @import url(http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.css);
 /* normalize.css v2.1.1 | MIT License | git.io/normalize */
@@ -641,60 +641,722 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Desarrollo de Aplicaciones Híbridas</h1>
+<h1>Pruebas en aplicaciones Ionic</h1>
 <div class="details">
-<span id="author" class="author">Máster en Tecnologías y Aplicaciones en Ingeniería Informática&#8201;&#8212;&#8201;UAL</span><br>
+<span id="author" class="author">Desarrollo de Aplicaciones Híbridas&#8201;&#8212;&#8201;Máster TAII&#8201;&#8212;&#8201;UAL</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Tabla de contenidos</div>
 <ul class="sectlevel1">
-<li><a href="#_actividades">Actividades</a>
+<li><a href="#_tipos_de_pruebas_en_aplicaciones_híbridas">1. Tipos de pruebas en aplicaciones híbridas</a>
 <ul class="sectlevel2">
-<li><a href="#_actividad_0_desarrollo_de_una_aplicación_híbrida_con_ionic">Actividad 0 - Desarrollo de una aplicación híbrida con Ionic</a></li>
-<li><a href="#_actividad_1_navegación_y_routing_en_aplicaciones_ionic">Actividad 1 - Navegación y routing en aplicaciones Ionic</a></li>
-<li><a href="#_actividad_2_integración_con_servicios_web_en_aplicaciones_ionic">Actividad 2 - Integración con servicios web en aplicaciones Ionic</a></li>
-<li><a href="#_actividad_3_uso_de_funciones_nativas_en_aplicaciones_ionic">Actividad 3 - Uso de funciones nativas en aplicaciones Ionic</a></li>
-<li><a href="#_actividad_4_almacenamiento_y_recuperación_de_datos_en_aplicaciones_ionic">Actividad 4 - Almacenamiento y recuperación de datos en aplicaciones Ionic</a></li>
-<li><a href="#_actividad_5_pruebas_en_aplicaciones_ionic">Actividad 5 - Pruebas en aplicaciones Ionic</a></li>
+<li><a href="#_pruebas_unitarias">1.1. Pruebas unitarias</a></li>
+<li><a href="#_pruebas_end_to_end">1.2. Pruebas end-to-end</a></li>
 </ul>
 </li>
+<li><a href="#_uso_de_jasmine_y_karma_para_la_ejecución_de_pruebas_unitarias">2. Uso de Jasmine y Karma para la ejecución de pruebas unitarias</a>
+<ul class="sectlevel2">
+<li><a href="#_prueba_de_servicios_y_proveedores_de_servicios">2.1. Prueba de servicios y proveedores de servicios</a></li>
+<li><a href="#_prueba_de_componentes">2.2. Prueba de componentes</a></li>
+<li><a href="#_ejecución_de_las_pruebas_unitarias">2.3. Ejecución de las pruebas unitarias</a></li>
+</ul>
+</li>
+<li><a href="#_uso_de_protractor_para_la_ejecución_de_pruebas_e2e">3. Uso de Protractor para la ejecución de pruebas E2E</a></li>
+<li><a href="#_ejercicio_realización_de_pruebas_unitarias_y_e2e_en_una_aplicación_ionic">4. Ejercicio: Realización de pruebas unitarias y E2E en una aplicación Ionic</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_actividades">Actividades</h2>
+<h2 id="_tipos_de_pruebas_en_aplicaciones_híbridas">1. Tipos de pruebas en aplicaciones híbridas</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_actividad_0_desarrollo_de_una_aplicación_híbrida_con_ionic"><a href="https://javicriado.github.io/dah/act0.html">Actividad 0 - Desarrollo de una aplicación híbrida con Ionic</a></h3>
-
+<div class="paragraph">
+<p>Al igual que en el desarrollo de cualquier software, una aplicación híbrida debe ser sometida durante su desarrollo a un proceso de pruebas, preferiblemente, mediante una aproximación de integración continua que favorezca un desarrollo ágil y flexible.</p>
+</div>
+<div class="paragraph">
+<p>Entre los diferentes tipos de pruebas que podemos ejecutar sobre nuestras aplicaciones híbridas se encuentran:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pruebas unitarias: se realizan sobre cada componente desarrollado para probar pequeñas unidades de código que están aislados de otras partes o subsistemas de la aplicación.</p>
+</li>
+<li>
+<p>Pruebas de integración: se realizan para probar el comportamiento de dos o más componentes que tienen algún tipo de relación durante la ejecución de cierta funcionalidad.</p>
+</li>
+<li>
+<p>Pruebas de interfaz de usuario o end-to-end (E2E): se realizan desde el front-end y con el objetivo de satisfacer las necesidades de negocio de dicho front-end. Para ello, se intenta simular la interacción de un usuario que hace uso de la aplicación, evaluando los resultados obtenidos (lo que debe incluir una parte de la evaluacion de la experiencia del usuario).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En nuestro caso, vamos a hacer uso de tests E2E tanto para realizar pruebas de integración entre varios componentes como para probar funcionalidades que afecten a procesos de negocio de todo el sistema.</p>
+</div>
+<div class="paragraph">
+<p>Para más información, se recomienda acccder a la documentación de Ionic sobre la realización de pruebas (<a href="https://ionicframework.com/docs/angular/testing">enlace</a>).</p>
 </div>
 <div class="sect2">
-<h3 id="_actividad_1_navegación_y_routing_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act1.html">Actividad 1 - Navegación y routing en aplicaciones Ionic</a></h3>
-
+<h3 id="_pruebas_unitarias">1.1. Pruebas unitarias</h3>
+<div class="paragraph">
+<p>Las pruebas unitarias tienen el objetivo de probar pequeñas unidades de código de forma aislada. La propia naturaleza de las aplicaciones híbridas desarrolladas con Ionic y Angular favorecen este tipo de pruebas debido a su construcción modular.</p>
+</div>
+<div class="paragraph">
+<p>La escritura adicional del código para la ejecución de pruebas unitarias favorece no solo la verificación del código en el momento que se está desarrollando, sino que también sirve para la ejecución de pruebas de regresión cuando se realiza alguna modificación en otras partes de la aplicación. De forma adicional, el código de las pruebas unitarias sirve como parte de la documentación del software, al describir cuál es la funcionalidad que se quiere obtener al ejecutar la aplicación.</p>
+</div>
+<div class="paragraph">
+<p>Para la ejecución de las pruebas unitarias, vamos a hacer uso de Jasmine (<a href="https://jasmine.github.io/">enlace</a>) y de Karma (<a href="https://karma-runner.github.io/latest/index.html">enlace</a>).</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_actividad_2_integración_con_servicios_web_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act2.html">Actividad 2 - Integración con servicios web en aplicaciones Ionic</a></h3>
-
+<h3 id="_pruebas_end_to_end">1.2. Pruebas end-to-end</h3>
+<div class="paragraph">
+<p>Las pruebas E2E se centran en detectar aquellos errores que ponen en peligro los objetivos de negocio de una aplicación híbrida, tratando de poner de manifiesto errores ocultos que no son detectados por las pruebas unitarias, errores generados por una mala definición del flujo funcional o errores que provienen de la comunicación entres partes o subsistemas de la aplicación.</p>
+</div>
+<div class="paragraph">
+<p>Mediante este tipo de pruebas, se puede simular la interacción de un ratón, o de un teclado para generar eventos que afecten a la aplicación. También se puede comprobar si son visibles algunos elementos de la vista o determinar si la posición es correcta. Se pueden validar si están disponibles algunas acciones, si el tiempo de respuesta es el correcto o si otras medidas de rendimiento son adecuadas.</p>
+</div>
+<div class="paragraph">
+<p>Las herramientas de pruebas E2E suelen hacer uso de tecnologías basadas en Javascript para poder simular la interacción que el usuario lleva a cabo mediante el navegador web en el que se ejecuta la aplicación híbrida.</p>
+</div>
+<div class="paragraph">
+<p>Para la ejecución de las pruebas E2E, vamos a hacer uso de Protractor (<a href="https://www.protractortest.org/">enlace</a>), una herramienta que nos permite simular el comportamiento de una aplicación mediante la ejecución de los tests en un navegador a través de un servidor Selenium (<a href="https://www.selenium.dev/">enlace</a>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_uso_de_jasmine_y_karma_para_la_ejecución_de_pruebas_unitarias">2. Uso de Jasmine y Karma para la ejecución de pruebas unitarias</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para la ejecución de las pruebas unitarias, Jasmine se utiliza para la implementación de los tests, mientras que Karma se usa para poder crear el entorno y contexto de ejecución que permitan llevar a cabo dichas pruebas.</p>
+</div>
+<div class="paragraph">
+<p>Debemos tener en cuenta que la sintaxis de las pruebas en Jasmine se basa en las siguientes operaciones:
+* describe: equivalente a una colección (suite) de pruebas.
+* it: equivalente a una prueba específica (test) que debe ser contenida por una colección de pruebas. El uso de "it" y el nombre otorgado a la prueba deben favorecer la interpretación de dicha prueba. Por ejemplo <code>it("should be created", &#8230;&#8203;);</code> es la cabecera de una prueba cuyo objetivo es verificar que un elemento debería ser creado correctamente.
+* expect: equivalente a una comprobación o aserción (assert) que debe ser contenida por una prueba. El tipo de comprobaciones (matchers) que pueden realizarse son diversas, incluyendo la comprobación de un valor concreto, si es verdadero o falso, o si un valor es nulo, entre otros posibles ejemplos (ver <a href="https://jasmine.github.io/api/3.5/matchers.html">enlace</a>).</p>
+</div>
+<div class="paragraph">
+<p>Aunque la construcción de las pruebas es similar para cada elemento de una aplicación Ionic, vamos a distinguir cómo se construyen los tests para el caso de los servicios y cómo deben implementarse las pruebas en el caso de los componentes.</p>
 </div>
 <div class="sect2">
-<h3 id="_actividad_3_uso_de_funciones_nativas_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act3.html">Actividad 3 - Uso de funciones nativas en aplicaciones Ionic</a></h3>
+<h3 id="_prueba_de_servicios_y_proveedores_de_servicios">2.1. Prueba de servicios y proveedores de servicios</h3>
+<div class="paragraph">
+<p>Para analizar la prueba unitaria de servicios, crearemos una aplicación Ionic vacía a partir de la plantilla <code>blank</code> y generaremos un nuevo servicio llamado <code>generate-text</code> con la siguiente implementación:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Archivo <code>services/generate-text.service.ts</code></strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ts" data-lang="ts">import { Injectable } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root'
+})
+export class GenerateTextService {
+
+  public words: string[] = [ <i class="conum" data-value="1"></i><b>(1)</b>
+    "This",
+    "is",
+    "an",
+    "example",
+    "of",
+    "service",
+    "for",
+    "DAH"
+  ];
+
+  constructor() { }
+
+  getWords() {
+    return this.words;
+  }
+
+  getRandomWord() {
+    return this.words[this.getRandomInt(0, this.words.length - 1)];
+  }
+
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Lista con palabras de ejemplo</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Para la prueba de este servicio, vamos a modificar la implementación del archivo de pruebas <code>generate-text.service.spec.ts</code> que se genera de forma automática:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Archivo <code>services/generate-text.service.spec.ts</code></strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ts" data-lang="ts">import { GenerateTextService } from './generate-text.service';
+
+let service : GenerateTextService; <i class="conum" data-value="1"></i><b>(1)</b>
+
+describe('GenerateTextService', () =&gt; {
+  beforeEach(() =&gt; { <i class="conum" data-value="2"></i><b>(2)</b>
+    service = new GenerateTextService(); <i class="conum" data-value="3"></i><b>(3)</b>
+  });
+
+  it('should be created', () =&gt; { <i class="conum" data-value="4"></i><b>(4)</b>
+    expect(service).toBeTruthy();
+  });
+
+  it("should do nothing", () =&gt; { <i class="conum" data-value="5"></i><b>(5)</b>
+    expect(true).toBeTruthy();
+    expect(1+1).toBe(2);
+    expect(2*3).toBe(6);
+  });
+
+  it("should return a non empty arry", () =&gt; { <i class="conum" data-value="6"></i><b>(6)</b>
+    let result = service.getWords();
+    expect(Array.isArray(result)).toBeTruthy();
+    expect(result.length).toBeGreaterThan(0);
+
+  });
+
+  it("should return a random word as a string", () =&gt; { <i class="conum" data-value="7"></i><b>(7)</b>
+    expect(typeof service.getRandomWord()).toBe("string");
+  });
+
+  it("should have 'DAH' and 'service' in the list of words", () =&gt; { <i class="conum" data-value="8"></i><b>(8)</b>
+    let result = service.getWords();
+    expect(result).toContain("DAH");
+    expect(result).toContain("service");
+  });
+});</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Variable para acceder al servicio y poder ejecutar sus funciones</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Código ejecutado antes de la realización de las pruebas</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Instanciación del servicio</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Comprobación de si el servicio ha sido creado</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Comprobación de operaciones de ejemplo que no afectan a la implementación del servicio</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Comprobación del tipo y tamaño de la lista de palabras</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Comprobación del tipo de la palabra devuelta por el servicio</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Comprobacion de que la lista de palabras contiene dos elementos concretos</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_actividad_4_almacenamiento_y_recuperación_de_datos_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act4.html">Actividad 4 - Almacenamiento y recuperación de datos en aplicaciones Ionic</a></h3>
+<h3 id="_prueba_de_componentes">2.2. Prueba de componentes</h3>
+<div class="paragraph">
+<p>Para analizar la prueba unitaria de un componente, vamos a modificar el componente <code>home</code> creado:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Archivo <code>home/home.page.ts</code></strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ts" data-lang="ts">import { Component } from '@angular/core';
+import { GenerateTextService } from '../services/generate-text.service';
 
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage {
+
+  public title : string = "Home Page"; <i class="conum" data-value="1"></i><b>(1)</b>
+  public word : string = "initial word"; <i class="conum" data-value="2"></i><b>(2)</b>
+
+  constructor(public testservice : GenerateTextService) {}
+
+  getWord() { <i class="conum" data-value="3"></i><b>(3)</b>
+    this.word = this.testservice.getRandomWord();
+  }
+
+  changeTitle(title) { <i class="conum" data-value="4"></i><b>(4)</b>
+    this.title = title;
+  }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Título para ser mostrado en la vista</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Palabra que será mostrada en la vista</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Uso del servicio para obtener una nueva palabra aleatoria</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Función para cambiar el título del componente</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Archivo <code>home.page.html</code></strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;ion-header [translucent]="true"&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-title&gt;
+      {{title}} <i class="conum" data-value="1"></i><b>(1)</b>
+    &lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content&gt;
+  &lt;ion-item&gt;
+    &lt;ion-input type="text" [(ngModel)]="word"&gt;&lt;/ion-input&gt; <i class="conum" data-value="2"></i><b>(2)</b>
+  &lt;/ion-item&gt;
+  &lt;ion-button expand="full" (click)="getWord()"&gt;Change the word&lt;/ion-button&gt; <i class="conum" data-value="3"></i><b>(3)</b>
+&lt;/ion-content&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Título del componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Palabra mostrada</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Botón para cambiar la palabra mostrada</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>La prueba de componentes requiere la realización de comprobaciones tanto en la clase TypeScript que lo define, como en la plantilla HTML. Para ello, se hace uso de un entorno de pruebas que incluye los diferentes elementos (módulos, componentes, servicios, etc.) requeridos durante la ejecución de dicho componente. Este entorno de pruebas recibe el noombre de <code>TestBed</code>.</p>
+</div>
+<div class="paragraph">
+<p>Mientras que se realiza la prueba de este componente, el acceso al mismo se realiza a través de un manejador (fixture) que permite hacer referencia a una instancia de dicho componente (<code>fixture.componentInstance</code>). Para acceder a los elementos del DOM, se hará uso de <code>fixture.nativeElement</code>.</p>
+</div>
+<div class="paragraph">
+<p>Para realizar pruebas en el componente <code>home</code>, modificaremos el archivo <code>home.page.spec.ts</code> incluyendo un conjunto de test que realizan verificacione sobre diferentes elementos de dicho componente:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Archivo <code>home.page.spec.ts</code></strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ts" data-lang="ts">import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core'; // added
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { IonicModule } from '@ionic/angular';
+import { HomePage } from './home.page';
+
+describe('HomePage', () =&gt; {
+  let component: HomePage;  <i class="conum" data-value="1"></i><b>(1)</b>
+  let fixture: ComponentFixture&lt;HomePage&gt<i class="conum" data-value="2"></i><b>(2)</b>
+  let de: DebugElement; <i class="conum" data-value="3"></i><b>(3)</b>
+  let el: HTMLElement; <i class="conum" data-value="4"></i><b>(4)</b>
+
+  beforeEach(async(() =&gt; {
+    TestBed.configureTestingModule({ <i class="conum" data-value="5"></i><b>(5)</b>
+      declarations: [ HomePage ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA], <i class="conum" data-value="6"></i><b>(6)</b>
+      imports: [IonicModule.forRoot()]
+    }).compileComponents(); <i class="conum" data-value="7"></i><b>(7)</b>
+
+    fixture = TestBed.createComponent(HomePage); <i class="conum" data-value="8"></i><b>(8)</b>
+    component = fixture.componentInstance; <i class="conum" data-value="9"></i><b>(9)</b>
+    fixture.detectChanges(); <i class="conum" data-value="10"></i><b>(10)</b>
+  }));
+
+  afterEach(() =&gt; { <i class="conum" data-value="11"></i><b>(11)</b>
+    fixture.destroy();
+    component = null;
+  })
+
+  it('should create', () =&gt; {
+    expect(component).toBeTruthy();
+  });
+
+  it('initialize the component with a specific title', () =&gt; {
+    expect(component['title']).toEqual('Home Page'); <i class="conum" data-value="12"></i><b>(12)</b>
+  });
+
+  it('can set the title to a supplied value', () =&gt; {
+    de = fixture.debugElement.query(By.css('ion-title')); <i class="conum" data-value="13"></i><b>(13)</b>
+    el = de.nativeElement;
+
+    component.changeTitle('New Title for Home Page'); <i class="conum" data-value="14"></i><b>(14)</b>
+    fixture.detectChanges();
+    expect(component['title']).toEqual('New Title for Home Page'); <i class="conum" data-value="15"></i><b>(15)</b>
+    expect(el.textContent).toContain('New Title for Home Page');
+  });
+
+});</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Declaración del componente para utilizarlo en todo el test</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Manejador del Componente con información adicional para su prueba</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Manejador de un elemento del componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Manejador de la vista (estructura HTML) de un elemento del componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Configuración del entorno para las pruebas</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Para poder ejecutar las pruebas sobre custom elements</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Compilación de los elementos incluidos en el entorno para las pruebas</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Creación del del componente para su prueba (manejador del componente con información adicional, i.e., fixture)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>Instancia del componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>Habilitación de la detección de cambios en el componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>Parte del código que se ejecuta después de los tests</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td>Acceso a la propiedad <code>title</code> del componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="13"></i><b>13</b></td>
+<td>Acceso a un elemento del DOM cuyo estilo contenga la etiqueta <code>ion-title</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="14"></i><b>14</b></td>
+<td>Operación para cambiar el título</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="15"></i><b>15</b></td>
+<td>Comprobación del nuevo valor del título</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_actividad_5_pruebas_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act5.html">Actividad 5 - Pruebas en aplicaciones Ionic</a></h3>
+<h3 id="_ejecución_de_las_pruebas_unitarias">2.3. Ejecución de las pruebas unitarias</h3>
+<div class="paragraph">
+<p>Para la ejecución de las pruebas unitarias de la aplicación, debemos ejecutar el siguiente comando:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ npm test</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Como resultado, se desplegará un servidor de Karma para ejecutar y visualizar el resultado de las pruebas realizadas:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/test.png" alt="test" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>Si alguna de las pruebas falla, se nos mostrará información sobre la causa que ha provocado el fallo:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/test-fail.png" alt="test" width="600">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_uso_de_protractor_para_la_ejecución_de_pruebas_e2e">3. Uso de Protractor para la ejecución de pruebas E2E</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para la ejecución de las pruebas E2E, se hace uso de Protractor para controlar el navegador y las acciones de interacción realizadas, mientras que Jasmine se utiliza para la construcción y ejecución de las pruebas.</p>
+</div>
+<div class="paragraph">
+<p>Cuando se crea una aplicación Ionic mediante el comando <code>ionic start</code>, se generan de forma automática dentro de la carpeta <code>e2e</code> los siguientes archivos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>protractor.conf.js</code>: archivo de configuración de Protractor</p>
+</li>
+<li>
+<p><code>tsconfig.e2e.json</code>: configuración específica de TypeScript para las pruebas</p>
+</li>
+<li>
+<p><code>src/app.po.ts</code>: definición de un objeto de página (page object) que define los métodos que permiten navegar por la aplicación, consultar sobre elementos del DOM y manipular elementos de la página</p>
+</li>
+<li>
+<p><code>src/app.e2e-spec.ts</code>: código para las pruebas E2E de la aplicación</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>La creación de un fichero <code>po</code> para cada objeto de página que se quiera probar no es obligatorio, pero se utiliza cuando es útil agrupar y definir la funcionalidad anteriormente mencionada en un archivo separado.</p>
+</div>
+<div class="paragraph">
+<p>A partir de la aplicación anterior, vamos a añadir un botón en el componente <code>home</code> que nos lleve a una nueva página llamada <code>new-page</code> pasándole por parámetro la palabra escrita o generada en dicha página:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;ion-button id="button-new-page" [routerLink]="['/new-page', data]"&gt;Go to new page&lt;/ion-button&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Modificaremos, además, la descripción del enturado en <code>app-routing.module.ts</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ts" data-lang="ts">{
+  path: 'new-page/:word',
+  loadChildren: () =&gt; import('./new-page/new-page.module').then( m =&gt; m.NewPagePageModule)
+},</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En la nueva página, añadiremos un texto de ejemplo y un botón para volver atrás:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;ion-buttons slot="start"&gt;
+  &lt;ion-back-button&gt;&lt;/ion-back-button&gt;
+&lt;/ion-buttons&gt;
+...
+&lt;ion-item&gt;
+  &lt;ion-label id="label-word"&gt;The word is: {{word}} &lt;/ion-label&gt;
+&lt;/ion-item&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Teniendo en cuenta que para ello demos modificar también la definición de dicho componente:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ts" data-lang="ts">import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
+@Component({
+  selector: 'app-new-page',
+  templateUrl: './new-page.page.html',
+  styleUrls: ['./new-page.page.scss'],
+})
+export class NewPagePage implements OnInit {
+
+  public word : string = "(no word)";
+
+  constructor(private activateRoute: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.word = this.activateRoute.snapshot.paramMap.get("word");
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Las pruebas que realizaremos consistirán en la comprobación de que la navegación desde la página <code>home</code> hacia la nueva página se realiza de forma correcta.</p>
+</div>
+<div class="paragraph">
+<p>Para ello, eliminaremos el test de ejemplo generado automáticamente que existe en el archivo <code>e2e/src/app.e2e-spec.ts</code> y crearemos un nuevo archivo <code>e2e/src/home.e2e-spec.ts</code> donde incluir la implementación de las pruebas E2E que se inician en el componente <code>home</code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Archivo <code>e2e/src/home.e2e-spec.ts</code></strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ts" data-lang="ts">import { browser, element, by, ExpectedConditions } from "protractor"; <i class="conum" data-value="1"></i><b>(1)</b>
+
+describe("home", () =&gt; {
+  beforeEach(() =&gt; {
+    browser.get("/home"); <i class="conum" data-value="2"></i><b>(2)</b>
+  });
+
+  it("the navigation to the new page sends the word", async () =&gt; {
+
+    <i class="conum" data-value="3"></i><b>(3)</b>
+    const elInp = element(by.id("item-input-text"));
+    const inp = elInp.element(by.css('input'));
+    inp.clear();
+    inp.sendKeys("test text");
+
+    <i class="conum" data-value="4"></i><b>(4)</b>
+    const elBut = element(by.id("button-new-page"));
+    browser.wait(ExpectedConditions.elementToBeClickable(elBut));
+    await elBut.click();
+
+    browser.driver.sleep(500); <i class="conum" data-value="5"></i><b>(5)</b>
+
+    expect(element(by.id("label-word")).getText()).toContain("test text"); <i class="conum" data-value="6"></i><b>(6)</b>
+
+  });
+});</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Importación de los elementos de Protractor necesarios</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Navegación hacia el componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Escritura del texto en el elemento de entrada del componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Realización de clic en el botón que realiza la navegación hacia la nueva página</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Pausa para esperar la finalización de la navegación</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Comprobación del texto de la etiqueta en la nueva página</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Para ejecutar las pruebas E2E, lo haremos a través del siguiente comando:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ npm run e2e</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Como resultado, se abrirá el navegador para llevar a cabo la interacción implementada. Al finalizar la realización de las pruebas, se nos mostrará un resumen de la ejecución:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>  home
+    √ the navigation to the new page sends the word
+
+Executed 1 of 1 spec SUCCESS in 2 secs.
+[12:46:54] I/launcher - 0 instance(s) of WebDriver still running
+[12:46:54] I/launcher - chrome #01 passed</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En el caso de que alguna de las pruebas falle, se aportará la información correspondiente. Por ejemplo, en el siguiente caso, el texto enviado no coincide con el texto esperado:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>**************************************************
+*                    Failures                    *
+**************************************************
+
+1) home the navigation to the new page sends the word
+  - Expected 'The word is: test text' to contain 'wrong text'.
+
+Executed 1 of 1 spec (1 FAILED) in 2 secs.
+[12:49:19] I/launcher - 0 instance(s) of WebDriver still running
+[12:49:19] I/launcher - chrome #01 failed 1 test(s)
+[12:49:19] I/launcher - overall: 1 failed spec(s)
+[12:49:19] E/launcher - Process exited with error code 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ejercicio_realización_de_pruebas_unitarias_y_e2e_en_una_aplicación_ionic">4. Ejercicio: Realización de pruebas unitarias y E2E en una aplicación Ionic</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Se debe crear un nuevo proyecto Ionic que contenga la funcionalidad de la Actividad 1 (ver <a href="https://javicriado.github.io/dah/act1.html">enlace</a>). En dicho proyecto, se deben añadir las pruebas unitarias y E2E necesarias para comprobar la funcionalidad descrita.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-16 13:25:18 +0200
+Last updated 2020-04-16 13:24:00 +0200
 </div>
 </div>
 </body>
