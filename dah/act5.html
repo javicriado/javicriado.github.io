@@ -685,7 +685,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <p>Pruebas de integración: se realizan para probar el comportamiento de dos o más componentes que tienen algún tipo de relación durante la ejecución de cierta funcionalidad.</p>
 </li>
 <li>
-<p>Pruebas de interfaz de usuario o end-to-end (E2E): se realizan desde el front-end y con el objetivo de satisfacer las necesidades de negocio de dicho front-end. Para ello, se intenta simular la interacción de un usuario que hace uso de la aplicación, evaluando los resultados obtenidos (lo que debe incluir una parte de la evaluacion de la experiencia del usuario).</p>
+<p>Pruebas de interfaz de usuario o end-to-end (E2E): se realizan desde el front-end y con el objetivo de satisfacer las necesidades de negocio de dicho front-end. Para ello, se intenta simular la interacción de un usuario que hace uso de la aplicación, evaluando los resultados obtenidos (lo que debe incluir una parte de la evaluación de la experiencia del usuario).</p>
 </li>
 </ul>
 </div>
@@ -693,7 +693,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <p>En nuestro caso, vamos a hacer uso de tests E2E tanto para realizar pruebas de integración entre varios componentes como para probar funcionalidades que afecten a procesos de negocio de todo el sistema.</p>
 </div>
 <div class="paragraph">
-<p>Para más información, se recomienda acccder a la documentación de Ionic sobre la realización de pruebas (<a href="https://ionicframework.com/docs/angular/testing">enlace</a>).</p>
+<p>Para más información, se recomienda acceder a la documentación de Ionic sobre la realización de pruebas (<a href="https://ionicframework.com/docs/angular/testing">enlace</a>).</p>
 </div>
 <div class="sect2">
 <h3 id="_pruebas_unitarias">1.1. Pruebas unitarias</h3>
@@ -710,7 +710,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div class="sect2">
 <h3 id="_pruebas_end_to_end">1.2. Pruebas end-to-end</h3>
 <div class="paragraph">
-<p>Las pruebas E2E se centran en detectar aquellos errores que ponen en peligro los objetivos de negocio de una aplicación híbrida, tratando de poner de manifiesto errores ocultos que no son detectados por las pruebas unitarias, errores generados por una mala definición del flujo funcional o errores que provienen de la comunicación entres partes o subsistemas de la aplicación.</p>
+<p>Las pruebas E2E se centran en detectar aquellos errores que ponen en peligro los objetivos de negocio de una aplicación híbrida, tratando de poner de manifiesto errores ocultos que no son detectados por las pruebas unitarias, errores generados por una mala definición del flujo funcional o errores que provienen de la comunicación entre partes o subsistemas de la aplicación.</p>
 </div>
 <div class="paragraph">
 <p>Mediante este tipo de pruebas, se puede simular la interacción de un ratón, o de un teclado para generar eventos que afecten a la aplicación. También se puede comprobar si son visibles algunos elementos de la vista o determinar si la posición es correcta. Se pueden validar si están disponibles algunas acciones, si el tiempo de respuesta es el correcto o si otras medidas de rendimiento son adecuadas.</p>
@@ -719,7 +719,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <p>Las herramientas de pruebas E2E suelen hacer uso de tecnologías basadas en Javascript para poder simular la interacción que el usuario lleva a cabo mediante el navegador web en el que se ejecuta la aplicación híbrida.</p>
 </div>
 <div class="paragraph">
-<p>Para la ejecución de las pruebas E2E, vamos a hacer uso de Protractor (<a href="https://www.protractortest.org/">enlace</a>), una herramienta que nos permite simular el comportamiento de una aplicación mediante la ejecución de los tests en un navegador a través de un servidor Selenium (<a href="https://www.selenium.dev/">enlace</a>).</p>
+<p>Para la ejecución de las pruebas E2E, vamos a hacer uso de Protractor (<a href="https://www.protractortest.org/">enlace</a>), una herramienta que nos permite simular el comportamiento de una aplicación mediante la ejecución de los tests en un navegador a través de un controlador de dicho navegador web.</p>
 </div>
 </div>
 </div>
@@ -876,7 +876,7 @@ describe('GenerateTextService', () =&gt; {
 </tr>
 <tr>
 <td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>Comprobacion de que la lista de palabras contiene dos elementos concretos</td>
+<td>Comprobación de que la lista de palabras contiene dos elementos concretos</td>
 </tr>
 </table>
 </div>
@@ -959,7 +959,7 @@ export class HomePage {
 &lt;/ion-header&gt;
 
 &lt;ion-content&gt;
-  &lt;ion-item&gt;
+  &lt;ion-item id="item-input-text"&gt;
     &lt;ion-input type="text" [(ngModel)]="word"&gt;&lt;/ion-input&gt; <i class="conum" data-value="2"></i><b>(2)</b>
   &lt;/ion-item&gt;
   &lt;ion-button expand="full" (click)="getWord()"&gt;Change the word&lt;/ion-button&gt; <i class="conum" data-value="3"></i><b>(3)</b>
@@ -985,13 +985,13 @@ export class HomePage {
 </div>
 </div>
 <div class="paragraph">
-<p>La prueba de componentes requiere la realización de comprobaciones tanto en la clase TypeScript que lo define, como en la plantilla HTML. Para ello, se hace uso de un entorno de pruebas que incluye los diferentes elementos (módulos, componentes, servicios, etc.) requeridos durante la ejecución de dicho componente. Este entorno de pruebas recibe el noombre de <code>TestBed</code>.</p>
+<p>La prueba de componentes requiere la realización de comprobaciones tanto en la clase TypeScript que lo define, como en la plantilla HTML. Para ello, se hace uso de un entorno de pruebas que incluye los diferentes elementos (módulos, componentes, servicios, etc.) requeridos durante la ejecución de dicho componente. Este entorno de pruebas recibe el nombre de <code>TestBed</code>.</p>
 </div>
 <div class="paragraph">
 <p>Mientras que se realiza la prueba de este componente, el acceso al mismo se realiza a través de un manejador (fixture) que permite hacer referencia a una instancia de dicho componente (<code>fixture.componentInstance</code>). Para acceder a los elementos del DOM, se hará uso de <code>fixture.nativeElement</code>.</p>
 </div>
 <div class="paragraph">
-<p>Para realizar pruebas en el componente <code>home</code>, modificaremos el archivo <code>home.page.spec.ts</code> incluyendo un conjunto de test que realizan verificacione sobre diferentes elementos de dicho componente:</p>
+<p>Para realizar pruebas en el componente <code>home</code>, modificaremos el archivo <code>home.page.spec.ts</code> incluyendo un conjunto de test que realizan verificaciones sobre diferentes elementos de dicho componente:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1179,7 +1179,7 @@ describe('HomePage', () =&gt; {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-html" data-lang="html">&lt;ion-button id="button-new-page" [routerLink]="['/new-page', data]"&gt;Go to new page&lt;/ion-button&gt;</code></pre>
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;ion-button id="button-new-page" [routerLink]="['/new-page', word]"&gt;Go to new page&lt;/ion-button&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1208,7 +1208,7 @@ describe('HomePage', () =&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>Teniendo en cuenta que para ello demos modificar también la definición de dicho componente:</p>
+<p>Teniendo en cuenta que para ello debemos modificar también la definición de dicho componente:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1356,7 +1356,7 @@ Executed 1 of 1 spec (1 FAILED) in 2 secs.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-16 13:24:00 +0200
+Last updated 2020-04-20 10:03:50 +0200
 </div>
 </div>
 </body>
