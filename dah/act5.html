@@ -731,10 +731,20 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <p>Para la ejecución de las pruebas unitarias, Jasmine se utiliza para la implementación de los tests, mientras que Karma se usa para poder crear el entorno y contexto de ejecución que permitan llevar a cabo dichas pruebas.</p>
 </div>
 <div class="paragraph">
-<p>Debemos tener en cuenta que la sintaxis de las pruebas en Jasmine se basa en las siguientes operaciones:
-* describe: equivalente a una colección (suite) de pruebas.
-* it: equivalente a una prueba específica (test) que debe ser contenida por una colección de pruebas. El uso de "it" y el nombre otorgado a la prueba deben favorecer la interpretación de dicha prueba. Por ejemplo <code>it("should be created", &#8230;&#8203;);</code> es la cabecera de una prueba cuyo objetivo es verificar que un elemento debería ser creado correctamente.
-* expect: equivalente a una comprobación o aserción (assert) que debe ser contenida por una prueba. El tipo de comprobaciones (matchers) que pueden realizarse son diversas, incluyendo la comprobación de un valor concreto, si es verdadero o falso, o si un valor es nulo, entre otros posibles ejemplos (ver <a href="https://jasmine.github.io/api/3.5/matchers.html">enlace</a>).</p>
+<p>Debemos tener en cuenta que la sintaxis de las pruebas en Jasmine se basa en las siguientes operaciones:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>describe</code>: equivalente a una colección (suite) de pruebas.</p>
+</li>
+<li>
+<p><code>it</code>: equivalente a una prueba específica (test) que debe ser contenida por una colección de pruebas. El uso de "it" y el nombre otorgado a la prueba deben favorecer la interpretación de dicha prueba. Por ejemplo <code>it("should be created", &#8230;&#8203;);</code> es la cabecera de una prueba cuyo objetivo es verificar que un elemento debería ser creado correctamente.</p>
+</li>
+<li>
+<p><code>expect</code>: equivalente a una comprobación o aserción (assert) que debe ser contenida por una prueba. El tipo de comprobaciones (matchers) que pueden realizarse son diversas, incluyendo la comprobación de un valor concreto, si es verdadero o falso, o si un valor es nulo, entre otros posibles ejemplos (ver <a href="https://jasmine.github.io/api/3.5/matchers.html">enlace</a>).</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Aunque la construcción de las pruebas es similar para cada elemento de una aplicación Ionic, vamos a distinguir cómo se construyen los tests para el caso de los servicios y cómo deben implementarse las pruebas en el caso de los componentes.</p>
@@ -1356,7 +1366,7 @@ Executed 1 of 1 spec (1 FAILED) in 2 secs.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-20 10:03:50 +0200
+Last updated 2020-04-22 11:57:15 +0200
 </div>
 </div>
 </body>
