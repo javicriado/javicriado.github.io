@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Máster en Tecnologías y Aplicaciones en Ingeniería Informática&#8201;&#8212;&#8201;UAL">
+<meta name="author" content="Desarrollo de Aplicaciones Híbridas&#8201;&#8212;&#8201;Máster TAII&#8201;&#8212;&#8201;UAL">
 <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-<title>Desarrollo de Aplicaciones Híbridas</title>
+<title>Despliegue de una aplicación híbrida en Android</title>
 <style>
 @import url(http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.css);
 /* normalize.css v2.1.1 | MIT License | git.io/normalize */
@@ -641,65 +641,233 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Desarrollo de Aplicaciones Híbridas</h1>
+<h1>Despliegue de una aplicación híbrida en Android</h1>
 <div class="details">
-<span id="author" class="author">Máster en Tecnologías y Aplicaciones en Ingeniería Informática&#8201;&#8212;&#8201;UAL</span><br>
+<span id="author" class="author">Desarrollo de Aplicaciones Híbridas&#8201;&#8212;&#8201;Máster TAII&#8201;&#8212;&#8201;UAL</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Tabla de contenidos</div>
 <ul class="sectlevel1">
-<li><a href="#_actividades">Actividades</a>
-<ul class="sectlevel2">
-<li><a href="#_actividad_0_desarrollo_de_una_aplicación_híbrida_con_ionic">Actividad 0 - Desarrollo de una aplicación híbrida con Ionic</a></li>
-<li><a href="#_actividad_1_navegación_y_routing_en_aplicaciones_ionic">Actividad 1 - Navegación y routing en aplicaciones Ionic</a></li>
-<li><a href="#_actividad_2_integración_con_servicios_web_en_aplicaciones_ionic">Actividad 2 - Integración con servicios web en aplicaciones Ionic</a></li>
-<li><a href="#_actividad_3_uso_de_funciones_nativas_en_aplicaciones_ionic">Actividad 3 - Uso de funciones nativas en aplicaciones Ionic</a></li>
-<li><a href="#_actividad_4_almacenamiento_y_recuperación_de_datos_en_aplicaciones_ionic">Actividad 4 - Almacenamiento y recuperación de datos en aplicaciones Ionic</a></li>
-<li><a href="#_actividad_5_pruebas_en_aplicaciones_ionic">Actividad 5 - Pruebas en aplicaciones Ionic</a></li>
-<li><a href="#_actividad_6_despliegue_de_una_aplicación_híbrida_en_android">Actividad 6 - Despliegue de una aplicación híbrida en Android</a></li>
-</ul>
-</li>
+<li><a href="#_configuración_de_android_studio">1. Configuración de Android Studio</a></li>
+<li><a href="#_configuración_de_la_aplicación_híbrida_para_su_despliegue">2. Configuración de la aplicación híbrida para su despliegue</a></li>
+<li><a href="#_ejecución_de_la_aplicación_híbrida_en_un_dispositivo_android_virtual">3. Ejecución de la aplicación híbrida en un dispositivo Android virtual</a></li>
+<li><a href="#_construcción_del_archivo_apk">4. Construcción del archivo APK</a></li>
+<li><a href="#_subida_de_la_aplicación_a_google_play">5. Subida de la aplicación a Google Play</a></li>
+<li><a href="#_personalización_de_la_aplicación">6. Personalización de la aplicación</a></li>
+<li><a href="#_ejercicio_despliegue_de_una_aplicación_ionic_en_un_dispositivo_android">7. Ejercicio: Despliegue de una aplicación Ionic en un dispositivo Android</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_actividades">Actividades</h2>
+<h2 id="_configuración_de_android_studio">1. Configuración de Android Studio</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_actividad_0_desarrollo_de_una_aplicación_híbrida_con_ionic"><a href="https://javicriado.github.io/dah/act0.html">Actividad 0 - Desarrollo de una aplicación híbrida con Ionic</a></h3>
-
+<div class="paragraph">
+<p>Para el despliegue de aplicaciones híbridas en Android, debemos tener instalado Android Studio (<a href="https://developer.android.com/studio">enlace</a>).</p>
 </div>
-<div class="sect2">
-<h3 id="_actividad_1_navegación_y_routing_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act1.html">Actividad 1 - Navegación y routing en aplicaciones Ionic</a></h3>
-
+<div class="paragraph">
+<p>Una vez instalado, se recomienda añadir la última versión estable de Android SDK. Para ello, seleccionaremos en el menú <code>Tools &gt; SDK Manager</code>. En la pestaña <code>SDK Platforms</code> deberemos tener seleccionado <code>Android 10.0 (Q)</code> (API Level 29) y en la pestaña <code>SDK Tools</code> deberemos tener seleccionadas:</p>
 </div>
-<div class="sect2">
-<h3 id="_actividad_2_integración_con_servicios_web_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act2.html">Actividad 2 - Integración con servicios web en aplicaciones Ionic</a></h3>
-
+<div class="ulist">
+<ul>
+<li>
+<p>Android SDK Build-Tools</p>
+</li>
+<li>
+<p>Android Emulator</p>
+</li>
+<li>
+<p>Android SDK Platform-Tools</p>
+</li>
+<li>
+<p>Intel x86 Emulator Accelerator (HAXM installer)</p>
+</li>
+</ul>
 </div>
-<div class="sect2">
-<h3 id="_actividad_3_uso_de_funciones_nativas_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act3.html">Actividad 3 - Uso de funciones nativas en aplicaciones Ionic</a></h3>
-
+<div class="paragraph">
+<p>También debemos crear un dispositivo virtual seleccionando <code>Tools &gt; AVD Manager</code>. Se recomienda crear un dispositivo compatible con el nivel 29 de la API de Android que tenemos instalado.</p>
 </div>
-<div class="sect2">
-<h3 id="_actividad_4_almacenamiento_y_recuperación_de_datos_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act4.html">Actividad 4 - Almacenamiento y recuperación de datos en aplicaciones Ionic</a></h3>
-
 </div>
-<div class="sect2">
-<h3 id="_actividad_5_pruebas_en_aplicaciones_ionic"><a href="https://javicriado.github.io/dah/act5.html">Actividad 5 - Pruebas en aplicaciones Ionic</a></h3>
-
 </div>
-<div class="sect2">
-<h3 id="_actividad_6_despliegue_de_una_aplicación_híbrida_en_android"><a href="https://javicriado.github.io/dah/act6.html">Actividad 6 - Despliegue de una aplicación híbrida en Android</a></h3>
-
+<div class="sect1">
+<h2 id="_configuración_de_la_aplicación_híbrida_para_su_despliegue">2. Configuración de la aplicación híbrida para su despliegue</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para realizar una prueba de la configuración que debemos realizar en una aplicación Ionic para su despliegue en un dispositivo Android, vamos a crear un proyecto vacío:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ionic start deployapp blank --type=angular --capacitor</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Antes de iniciar la configuración de Capacitor y de añadir la plataforma Android para su despliegue, debemos construir la aplicación para generar los recursos necesarios del proyecto en la carpeta <code>wwww</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ionic build</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Seguidamente, iniciaremos la configuración de Capacitor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ npx cap init</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Una vez establecidos el nombre de la aplicación y el nombre del paquete, añadiremos la plataforma Android a la configuración de la aplicación:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ npx cap add android</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cuando realicemos cambios en la aplicación (en la configuración de los plugins utilizados o en el código), deberemos sincronizar dichos cambios para que se reflejen en la carpeta <code>android</code> mediante los comandos:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ionic build
+$ npx cap sync</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Estas acciones están destinadas a la generación de los recursos de la aplicación para que pueda ser desplegada en un dispositivo Android y que estarán disponibles en la carpeta <code>android</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ejecución_de_la_aplicación_híbrida_en_un_dispositivo_android_virtual">3. Ejecución de la aplicación híbrida en un dispositivo Android virtual</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Antes de realizar el despliegue de la aplicación en un dispositivo real, debemos validar la ejecución y el despliegue de la aplicación en un dispositivo virtual.</p>
+</div>
+<div class="paragraph">
+<p>Para ello, una vez que la aplicación ha sido construida y posteriormente configurada para que pueda ser desplegada en una plataforma Android, abriremos dicha aplicación dentro de Android Studio:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ npx cap open android</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El IDE realizará la construcción del proyecto y nos informará en el caso de que ocurra algún error en dicha construcción. Si la construcción se realiza de forma correcta, podemos proceder a la ejecución de la aplicación en el dispositivo virtual que hayamos creado previamente.</p>
+</div>
+<div class="paragraph">
+<p>Seleccionaremos el botón de reproducción o presionaremos la combinación de teclas <code>Mayúsculas + F10</code>.</p>
+</div>
+<div class="paragraph">
+<p>Se iniciará el emulador de Android y se nos informará de nuevo en el caso de que ocurra algún error. Si el dispositivo virtual está apagado, debemos encenderlo.</p>
+</div>
+<div class="paragraph">
+<p>Cuando finalicemos la prueba de la aplicación en el dispositivo virtual, se recomienda parar primero la ejecución de la aplicación y posteriormente cerrar y/o apagar el emulador.</p>
+</div>
+<div class="paragraph">
+<p>Si realizamos un cambio en el código de la aplicación, debemos ejecutar los comandos <code>ionic build</code> y <code>npx cap sync</code>, además de reiniciar la ejecución de la aplicación en Android Studio. El emulador reflejará los cambios sin tener que reinstalar la aplicación, aunque en un dispositivo real sí deberemos reinstalar la aplicación o aplicar una actualización cuando queramos reflejar los cambios.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_construcción_del_archivo_apk">4. Construcción del archivo APK</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Una vez que determinemos que la aplicación está lista para ser desplegada en dispositivos reales, el proceso habitual es desplegarla en dispositivos controlados antes de subirla a Google Play para que esté disponible en un mercado público.</p>
+</div>
+<div class="paragraph">
+<p>Para ello, construiremos un paquete de aplicación Android (Android Application Package) en un archivo APK que permita la distribución e instalación de nuestra aplicación.</p>
+</div>
+<div class="paragraph">
+<p>En Android Studio, seleccionaremos <code>Build &gt; Generate Signed Bundle / APK</code> y marcaremos la opción APK. En el siguiente paso, debemos crear un almacén de claves si no tenemos ya uno creado y, además, seleccionar una clave de dicho almacén de claves o crear una clave nueva.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Android App Bundle (archivos AAB en lugar de APK) es un nuevo formato para desplegar aplicaciones que incluye todo el códugo compilado y los recursos de una aplicación, pero que deja la generación y la firma de la APK para que Google Play las lleve a cabo (para más información, se recomienda ver el siguente <a href="https://developer.android.com/guide/app-bundle?utm_source=android-studio">enlace</a>).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A continuación, en las opciones de construcción, debemos seleccionar <code>debug</code> o <code>release</code>. La primera opción la seleccionaremos cuando la APK se ejecuta desde nuestro IDE para ser desplegada temporalmente en un dispositivo. La segunda opción tiene como objetivo la instalación de la aplicación en un dispositivo. Por ello, en este caso seleccionaremos la opción <code>release</code> marcando las dos versiones de firma para la comprobación de la seguridad al instalar la aplicación.</p>
+</div>
+<div class="paragraph">
+<p>Como resultado, se nos mostrará el mensaje "Generated Signed APK". En nuestro proyecto Ionic, dentro de la carpeta <code>android/app/release</code> se encontrará el archivo APK con la aplicación.</p>
+</div>
+<div class="paragraph">
+<p>Al abrir este archivo en nuestro dispositivo Android (debemos habilitar los permisos para permitir la instalación de fuentes desconocidas), nos solicitará nuestro permiso para instalar la aplicación. Además, se nos notificará que la aplicación ha sido bloqueada por Play Protect puesto que no se reconoce al desarrollador de la aplicación. Debemos seleccionar "Instalar de todas formas". Podemos elegir si enviar a Play Protect la aplicación para ser analizada antes de abrirla. En nuestro caso seleccionaremos que no.</p>
+</div>
+<div class="paragraph">
+<p>Para finalizar seleccionaremos "Abrir" para ejecutar nuestra aplicación y poder comprobar su funcionamiento.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_subida_de_la_aplicación_a_google_play">5. Subida de la aplicación a Google Play</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Una vez que hemos verificado el funcionamiento de nuestra aplicación en un conjunto de dispositivos controlados de prueba, estamos en disposición de subirla al mercado público de Google Play.</p>
+</div>
+<div class="paragraph">
+<p>Para ello, debemos entrar en la consola de desarrollador de Google Play (<a href="https://play.google.com/apps/publish/">enlace</a>) y seleccionar en el menú "Tus aplicaciones &gt; Crear una aplicación".</p>
+</div>
+<div class="paragraph">
+<p>En primer lugar, debemos seleccionar un idioma y un nombre para la aplicación. En segundo lugar, debemos rellenar una serie de formularios relacionados con nuestra aplicación. Para poder subir la aplicación, debemos acceder a la sección "Versiones de la aplicación". Podemos subirla de diferentes maneras: para su explotación (producción) o para la realización de pruebas (beta, alfa y pruebas internas).</p>
+</div>
+<div class="paragraph">
+<p>Una vez completada la información relacionada con nuestra aplicación, debemos esperar a que Google la revise. Una vez revisada y aprobada, estará disponible en Google Play.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_personalización_de_la_aplicación">6. Personalización de la aplicación</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sin entrar en cuestiones específicas relacionadas con el comportamiento o el estilo de los componentes de una aplicación híbrida, en esta sección vamos a revisar cómo personalizar los iconos y la pantalla de carga de nuestra aplicación.</p>
+</div>
+<div class="paragraph">
+<p>Desde Android Studio, localizaremos la carpeta <code>res/mipmap</code>. Podemos crear un nuevo conjunto de iconos haciendo clic derecho en <code>res</code> y seleccionando <code>New &gt; Image Asset</code>. De esta forma, podemos reemplazar todos los iconos por defecto por un nuevo conjunto de iconos creados a partir de una imagen que proporcionemos.</p>
+</div>
+<div class="paragraph">
+<p>Para configurar la pantalla de carga, debemos modificar las imágenes que se encuentran en la carpeta <code>res/drawable/splash</code>. Para ello, haremos clic derecho en <code>drawable</code> y seleccionaremos "Show in Explorer". Deberemos reemplazar todas las imágenes <code>splash.png</code> que se encuentran en las carpetas cuyo nombre comienza por <code>drawable</code>.</p>
+</div>
+<div class="paragraph">
+<p>Existen algunas herramientas como Ape Tools (<a href="https://apetools.webprofusion.com/#/">enlace</a>) o SplashScreenPro (<a href="https://splashscreen.pro/">enlace</a>), que facilitan la creación de los logotipos y de las pantallas de carga. También es posible crearlos a través de los comandos ofrecidos por <code>ionic cordova resource</code> (ver <a href="https://ionicframework.com/docs/cli/commands/cordova-resources">enlace</a>).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ejercicio_despliegue_de_una_aplicación_ionic_en_un_dispositivo_android">7. Ejercicio: Despliegue de una aplicación Ionic en un dispositivo Android</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Se debe crear un nuevo proyecto Ionic que contenga la funcionalidad de la Actividad 3 (ver <a href="https://javicriado.github.io/dah/act3html">enlace</a>).</p>
+</div>
+<div class="paragraph">
+<p>Se debe personalizar el estilo de la aplicación.</p>
+</div>
+<div class="paragraph">
+<p>Se debe configurar la aplicación mediante Capacitor para que se pueda desplegar en una plataforma Android.</p>
+</div>
+<div class="paragraph">
+<p>Se deben personalizar los iconos y la pantalla de carga de la aplicación Android.</p>
+</div>
+<div class="paragraph">
+<p>Se debe verificar que la aplicación puede instalarse en el dispositivo y que nos solicita los permisos necesarios para obtener nuestra posición y el acceso a la cámara.</p>
+</div>
+<div class="paragraph">
+<p>Se deben crear las capturas de pantalla necesarias que demuestren que se ha cumplido con las características solicitadas en este ejercicio.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-23 12:24:03 +0200
+Last updated 2020-04-23 12:22:32 +0200
 </div>
 </div>
 </body>
