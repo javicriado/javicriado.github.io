@@ -672,7 +672,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div class="ulist">
 <ul>
 <li>
-<p>Instalaremos la última versión LTS de Node.js (<a href="https://nodejs.org/es/">enlace</a>).</p>
+<p>Instalaremos Node.js (<a href="https://nodejs.org/es/">enlace</a>)</p>
 </li>
 </ul>
 </div>
@@ -682,16 +682,16 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ node -v
-v14.15.5
+v12.16.1
 
 $ npm -v
-6.14.11</code></pre>
+6.13.4</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Instalaremos Ionic, incluyendo algunas dependencias relacionadas con los dispositivos móviles:</p>
+<p>Instalaremos Ionic:</p>
 </li>
 </ul>
 </div>
@@ -711,17 +711,17 @@ $ npm -v
 
 Ionic:
 
-   Ionic CLI : 6.13.0
+   Ionic CLI : 6.2.0
 
 Utility:
 
-   cordova-res : 0.15.3
-   native-run  : 1.3.0
+   cordova-res : 0.9.0
+   native-run  : 0.3.0
 
 System:
 
-   NodeJS : v14.15.5
-   npm    : 6.14.11
+   NodeJS : v12.16.1
+   npm    : 6.13.4
    OS     : Windows 10</code></pre>
 </div>
 </div>
@@ -822,7 +822,7 @@ $ ionic serve</code></pre>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./images/myAppMenu-lab-v2.png" alt="myAppMenuLab" width="800">
+<img src="./images/myAppMenu-lab.png" alt="myAppMenuLab" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -855,13 +855,13 @@ $ ionic serve</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>e2e</code>: Contiene las pruebas end-to-end que, a diferencia de las pruebas unitarias que podemos ejecutar con <code>Jasmine</code> y <code>Karma</code>, permiten probar varios componentes a la vez y su funcionamiento derivado de la interacción con el usuario.</p>
+<p><code>e2e</code>. Contiene las pruebas end-to-end que, a diferencia de las pruebas unitarias que podemos ejecutar con <code>Jasmine</code> y <code>Karma</code>, permiten probar varios componentes a la vez y su funcionamiento derivado de la interacción con el usuario.</p>
 </li>
 <li>
-<p><code>node_modules</code>: Contiene los paquetes de los que depende la aplicación.</p>
+<p><code>node_modules</code>. Contiene los paquetes de los que depende la aplicación.</p>
 </li>
 <li>
-<p><code>src</code>: Contiene el código fuente de la aplicación.</p>
+<p><code>src</code>. Contiene el código fuente de la aplicación.</p>
 </li>
 </ul>
 </div>
@@ -871,43 +871,40 @@ $ ionic serve</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>.browserslist</code>: Lista de navegadores a tener en cuenta para la generación del código CSS y JavaScript.</p>
+<p><code>.gitignore</code>. Especifica los archivos que no deben tenerse en cuenta en la gestión de versiones.</p>
 </li>
 <li>
-<p><code>.editorconfig</code>: Indica la configuración para la edición y visualización de los archivos de texto del proyecto.</p>
+<p><code>angular.json</code>. Contiene la configuración de Angular CLI.</p>
 </li>
 <li>
-<p><code>.gitignore</code>: Especifica los archivos que no deben tenerse en cuenta en la gestión de versiones.</p>
+<p><code>browserslist</code>. Lista de navegadores a tener en cuenta para la generación del código CSS y JavaScript.</p>
 </li>
 <li>
-<p><code>angular.json</code>: Contiene la configuración de Angular CLI.</p>
+<p><code>capacitor.config.json</code>. Contiene la configuración de la integración de Ionic Capacitor por plataforma. Similar a <code>config.xml</code> para Cordova.</p>
 </li>
 <li>
-<p><code>capacitor.config.json</code>: Contiene la configuración de la integración de Ionic Capacitor por plataforma. Similar a <code>config.xml</code> para Cordova.</p>
+<p><code>ionic.config.json</code>. Contiene la configuración del proyecto Ionic. Su nombre, el tipo, las integraciones configuradas, etc.</p>
 </li>
 <li>
-<p><code>ionic.config.json</code>: Contiene la configuración del proyecto Ionic. Su nombre, el tipo, las integraciones configuradas, etc.</p>
+<p><code>karma.config.json</code>. Establece la configuración para la realización de las pruebas unitarias con Karma.</p>
 </li>
 <li>
-<p><code>karma.config.json</code>: Establece la configuración para la realización de las pruebas unitarias con Karma.</p>
+<p><code>package.json</code>. Describe metadatos del proyecto y también especifica sus dependencias.</p>
 </li>
 <li>
-<p><code>package-lock.json</code>: Archivo generador a partir de <code>package.json</code> que contiene el árbol de dependencias completo derivado del mismo.</p>
+<p><code>package-lock.json</code>. Archivo generador a partir de <code>package.json</code> que contiene el árbol de dependencias completo derivado del mismo.</p>
 </li>
 <li>
-<p><code>package.json</code>: Describe metadatos del proyecto y también especifica sus dependencias.</p>
+<p><code>tsconfig.json</code>. Establece la configuración mediante la que el compilador de TypeScript realiza la conversión a JavaScript.</p>
 </li>
 <li>
-<p><code>tsconfig.app.json</code>: Configuración específica del directorio <code>app</code> para realizar la conversión de TypeScript a JavaScript.</p>
+<p><code>tsconfig.app.json</code>. Configuración específica del directorio <code>app</code> para realizar la conversión de TypeScript a JavaScript.</p>
 </li>
 <li>
-<p><code>tsconfig.json</code>: Establece la configuración mediante la que el compilador de TypeScript realiza la conversión a JavaScript.</p>
+<p><code>tsconfig.spec.json</code>. Configuración específica para la realización de las pruebas.</p>
 </li>
 <li>
-<p><code>tsconfig.spec.json</code>: Configuración específica para la realización de las pruebas.</p>
-</li>
-<li>
-<p><code>tslint.json</code>: Proporciona la configuración de reglas sintácticas y semánticas para TypeScript.</p>
+<p><code>tslint.json</code>. Proporciona la configuración de reglas sintácticas y semánticas para TypeScript.</p>
 </li>
 </ul>
 </div>
@@ -919,16 +916,16 @@ $ ionic serve</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>app</code>: Contiene los módulos y los componentes de la aplicación, además de la especificación de la navegación entre ellos.</p>
+<p><code>app</code>. Contiene los módulos y los componentes de la aplicación, además de la especificación de la navegación entre ellos.</p>
 </li>
 <li>
-<p><code>assets</code>: Contiene los recursos utilizados en la aplicación, incluyendo también los iconos y las fuentes.</p>
+<p><code>assets</code>. Contiene los recursos utilizados en la aplicación, incluyendo también los iconos y las fuentes.</p>
 </li>
 <li>
-<p><code>environments</code>: Contiene archivos de configuración para diferentes entornos. Por defecto, se definen los entornos de desarrollo (<code>production : false</code>) y producción (<code>production : true</code>).</p>
+<p><code>environments</code>. Contiene archivos de configuración para diferentes entornos. Por defecto, se definen los entornos de desarrollo (<code>production : false</code>) y producción (<code>production : true</code>).</p>
 </li>
 <li>
-<p><code>theme</code>: Contiene los archivos Sass que permiten personalizar la apariencia de la aplicación. El archivo <code>variables.scss</code> describe variables con colores para diferentes temas o estilos.</p>
+<p><code>theme</code>. Contiene los archivos Sass que permiten personalizar la apariencia de la aplicación. El archivo <code>variables.scss</code> describe variables con colores para diferentes temas o estilos.</p>
 </li>
 </ul>
 </div>
@@ -938,22 +935,22 @@ $ ionic serve</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>global.scss</code>: Especifica los estilos que se aplican de forma global a toda la aplicación.</p>
+<p><code>global.scss</code>. Especifica los estilos que se aplican de forma global a toda la aplicación.</p>
 </li>
 <li>
-<p><code>index.html</code>: Archivo principal que sirve de punto de entrada para el despliegue de la aplicación en el componente <code>WebView</code>.</p>
+<p><code>index.html</code>. Archivo principal que sirve de punto de entrada para el despliegue de la aplicación en el componente <code>WebView</code>.</p>
 </li>
 <li>
-<p><code>main.ts</code>: Inicia la aplicación, realizando la carga del entorno.</p>
+<p><code>main.ts</code>. Inicia la aplicación, realizando la carga del entorno.</p>
 </li>
 <li>
-<p><code>polyfills.ts</code>: Contiene los polyfills (fragmentos de código que proporcionan funcionalidad moderna en navegadores antiguos o que no soportan cierta funcionalidad de forma nativa) que requiere Angular.</p>
+<p><code>polyfills.ts</code>. Contiene los polyfills (fragmentos de código que proporcionan funcionalidad moderna en navegadores antiguos o que no soportan cierta funcionalidad de forma nativa) que requiere Angular.</p>
 </li>
 <li>
-<p><code>test.ts</code>: Punto de entrada para la ejecución de las pruebas unitarias haciendo. Realiza la carga de todos los archivos <code>.spec</code>.</p>
+<p><code>test.ts</code>. Punto de entrada para la ejecución de las pruebas unitarias haciendo. Realiza la carga de todos los archivos <code>.spec</code>.</p>
 </li>
 <li>
-<p><code>zone-flags.ts</code>: Se utiliza para evitar que se generen ciertos eventos o acciones asíncronas.</p>
+<p><code>zone-flags.ts</code>. Se utiliza para evitar que se generen ciertos eventos o acciones asíncronas.</p>
 </li>
 </ul>
 </div>
@@ -985,7 +982,6 @@ $ ionic serve</code></pre>
 
   &lt;base href="/" /&gt;
 
-  &lt;meta name="color-scheme" content="light dark" /&gt;
   &lt;meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /&gt;
   &lt;meta name="format-detection" content="telephone=no" /&gt;
   &lt;meta name="msapplication-tap-highlight" content="no" /&gt;
@@ -1023,6 +1019,9 @@ $ ionic serve</code></pre>
 <div class="ulist">
 <ul>
 <li>
+<p><code>app.component.ts</code></p>
+</li>
+<li>
 <p><code>app.component.html</code></p>
 </li>
 <li>
@@ -1031,13 +1030,7 @@ $ ionic serve</code></pre>
 <li>
 <p><code>app.component.spec.ts</code></p>
 </li>
-<li>
-<p><code>app.component.ts</code></p>
-</li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Comenzaremos con la descripción del archivo con extensión <code>.ts</code>, puesto que es el punto de partida de cada uno de los componentes.</p>
 </div>
 <div class="sect3">
 <h4 id="_el_archivo_src_app_app_component_ts">2.3.1. El archivo <strong>src &gt; app &gt; app.component.ts</strong></h4>
@@ -1053,13 +1046,30 @@ $ ionic serve</code></pre>
 <div class="content">
 <pre class="highlight"><code class="language-ts" data-lang="ts">import { Component } from '@angular/core';
 
+import { Platform } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 @Component({
   selector: 'app-root', <i class="conum" data-value="1"></i><b>(1)</b>
   templateUrl: 'app.component.html', <i class="conum" data-value="2"></i><b>(2)</b>
-  styleUrls: ['app.component.scss'], <i class="conum" data-value="3"></i><b>(3)</b>
+  styleUrls: ['app.component.scss'] <i class="conum" data-value="3"></i><b>(3)</b>
 })
 export class AppComponent { <i class="conum" data-value="4"></i><b>(4)</b>
-  constructor() {}
+  constructor(
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar
+  ) {
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() =&gt; {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
+  }
 }</code></pre>
 </div>
 </div>
@@ -1148,6 +1158,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'; <i class="conum" data-value="1"></i><b>(1)</b>
@@ -1156,8 +1168,12 @@ import { AppComponent } from './app.component'; <i class="conum" data-value="1">
   declarations: [AppComponent], <i class="conum" data-value="2"></i><b>(2)</b>
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent], <i class="conum" data-value="3"></i><b>(3)</b>
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
+  bootstrap: [AppComponent] <i class="conum" data-value="3"></i><b>(3)</b>
 })
 export class AppModule {}</code></pre>
 </div>
@@ -1234,6 +1250,9 @@ export class AppRoutingModule {}</code></pre>
 <div class="ulist">
 <ul>
 <li>
+<p><code>explore-container.component.ts</code></p>
+</li>
+<li>
 <p><code>explore-container.component.html</code></p>
 </li>
 <li>
@@ -1242,13 +1261,7 @@ export class AppRoutingModule {}</code></pre>
 <li>
 <p><code>explore-container.component.spec.ts</code></p>
 </li>
-<li>
-<p><code>explore-container.component.ts</code></p>
-</li>
 </ul>
-</div>
-<div class="paragraph">
-<p>El archivo <code>explore-container.module.ts</code> será descrito una vez que se revisen los archivos que son estrictamente parte del componente.</p>
 </div>
 <div class="sect3">
 <h4 id="_el_archivo_explore_container_component_ts">2.6.1. El archivo <strong>explore-container.component.ts</strong></h4>
@@ -1555,7 +1568,7 @@ export class ExploreContainerComponentModule {}</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-22 13:07:34 +0100
+Last updated 2020-03-27 14:38:16 +0100
 </div>
 </div>
 </body>
