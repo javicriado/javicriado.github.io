@@ -7,7 +7,7 @@
 <meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="author" content="Desarrollo de Aplicaciones Híbridas&#8201;&#8212;&#8201;Máster TAII&#8201;&#8212;&#8201;UAL">
 <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-<title>Desarrollo de una aplicación híbrida con Ionic</title>
+<title>Uso de funciones nativas en aplicaciones Ionic</title>
 <style>
 @import url(http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.css);
 /* normalize.css v2.1.1 | MIT License | git.io/normalize */
@@ -641,653 +641,139 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Desarrollo de una aplicación híbrida con Ionic</h1>
+<h1>Uso de funciones nativas en aplicaciones Ionic</h1>
 <div class="details">
 <span id="author" class="author">Desarrollo de Aplicaciones Híbridas&#8201;&#8212;&#8201;Máster TAII&#8201;&#8212;&#8201;UAL</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Tabla de contenidos</div>
 <ul class="sectlevel1">
-<li><a href="#_configuración_inicial">1. Configuración inicial</a></li>
-<li><a href="#_aplicación_de_ejemplo_con_ionic">2. Aplicación de ejemplo con Ionic</a>
-<ul class="sectlevel2">
-<li><a href="#_contenido_de_la_carpeta_src">2.1. Contenido de la carpeta <strong>src</strong></a></li>
-<li><a href="#_el_archivo_src_app_index_html">2.2. El archivo <strong>src &gt; app &gt; index.html</strong></a></li>
-<li><a href="#_el_componente_app_root">2.3. El componente <strong>app-root</strong></a></li>
-<li><a href="#_el_archivo_src_app_app_module_ts">2.4. El archivo <strong>src &gt; app &gt; app.module.ts</strong></a></li>
-<li><a href="#_el_archivo_src_app_app_routing_module_ts">2.5. El archivo <strong>src &gt; app &gt; app-routing.module.ts</strong></a></li>
-<li><a href="#_el_componente_src_app_explore_container">2.6. El componente <strong>src &gt; app &gt; explore-container</strong></a></li>
-<li><a href="#_las_páginas_tab1_tab2_y_tab3">2.7. Las páginas <strong>tab1</strong>, <strong>tab2</strong> y <strong>tab3</strong></a></li>
-<li><a href="#_la_página_src_app_tabs">2.8. La página <strong>src &gt; app &gt; tabs</strong></a></li>
-</ul>
-</li>
-<li><a href="#_ejercicio_modificación_de_la_aplicación">3. Ejercicio: Modificación de la aplicación</a></li>
+<li><a href="#_uso_de_capacitor">1. Uso de Capacitor</a></li>
+<li><a href="#_obtención_de_la_geolocalización_del_dispositivo">2. Obtención de la geolocalización del dispositivo</a></li>
+<li><a href="#_utilización_de_la_cámara_del_dipositivo">3. Utilización de la cámara del dipositivo</a></li>
+<li><a href="#_uso_otras_funcionalidades_nativas">4. Uso otras funcionalidades nativas</a></li>
+<li><a href="#_ejercicio_creación_de_una_aplicación_ionic_con_funciones_nativas">5. Ejercicio: Creación de una aplicación Ionic con funciones nativas</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_configuración_inicial">1. Configuración inicial</h2>
+<h2 id="_uso_de_capacitor">1. Uso de Capacitor</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Instalaremos Node.js (<a href="https://nodejs.org/es/">enlace</a>)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Para poder utilizar funciones nativas en un proyecto Ionic, debemos incorporar en él la integración con Ionic Capacitor o con Apache Cordova.</p>
 </div>
 <div class="paragraph">
-<p>Comprobaremos que se han instalado correctamente Node.js y npm:</p>
+<p>En esta actividad, vamos a utilizar Ionic Capacitor, por lo que el primer paso es generar una aplicación vacía en la que se active su integración:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ node -v
-v12.16.1
-
-$ npm -v
-6.13.4</code></pre>
+<pre class="highlight"><code>$ ionic start nativeops blank --type=angular --capacitor</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Instalaremos Ionic:</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>El siguiente paso será inciar la configuración de Capacitor en el proyecto:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>npm install -g @ionic/cli native-run cordova-res</code></pre>
+<pre class="highlight"><code>$ cd nativeops
+$ npx cap init</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Comprobaremos que Ionic ha sido instalado correctamente:</p>
+<p>Cuando se nos solicite el nombre de la aplicación, lo más práctico es otorgar el mismo nombre que el del proyecto creado. En este caso, el nombre será <code>nativeops</code>.</p>
+</div>
+<div class="paragraph">
+<p>Cuando se nos pida el identificador del paquete de la aplicación, debemos escribir un nombre con el formato de un paquete Java. En este caso, el nombre que introduciremos será <code>com.dah.nativeops</code>.</p>
+</div>
+<div class="paragraph">
+<p>La salida por consola será la siguiente, confirmándonos que la integración con Capacitor se ha realizado correctamente y para que añadamos las platformas en las que queremos desplegar nuestra aplicación para así configurar el proyecto:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ ionic info
-[WARN] You are not in an Ionic project directory. Project context may be
-       missing.
+<pre class="highlight"><code>*   Your Capacitor project is ready to go!  *
 
-Ionic:
+Add platforms using "npx cap add":
 
-   Ionic CLI : 6.2.0
-
-Utility:
-
-   cordova-res : 0.9.0
-   native-run  : 0.3.0
-
-System:
-
-   NodeJS : v12.16.1
-   npm    : 6.13.4
-   OS     : Windows 10</code></pre>
+  npx cap add android
+  npx cap add ios
+  npx cap add electron</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>La advertencia nos indica que no nos encontramos en un directorio que contenga un proyecto de tipo Ionic.</p>
-</div>
-<div class="paragraph">
-<p>El siguiente paso es crear una aplicación mediante el comando:</p>
+<p>Sin embargo, todavía no podemos añadir ninguna plataforma porque no hemos compilado nuestro proyecto. Por ello, el siguiente paso que debemos ejecutar es:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ ionic start &lt;name&gt; &lt;template&gt; [options]</code></pre>
+<pre class="highlight"><code>$ ionic build</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El primer parámetro <code>&lt;name&gt;</code> indica el nombre de la aplicación. El segundo parámetro <code>&lt;template&gt;</code> indica el nombre de la plantilla a partir de la cual se crea el proyecto. El tercer parámetro permite indicar un tipo de proyecto específico con <code>--type</code>, la utilización de Apache Cordova con <code>--cordova</code> o la utilización de Ionic Capacitor con <code>--capacitor</code>. Mediante el comando <code>ionic start --list</code> se listan los diferentes tipos de proyectos y de plantillas.</p>
+<p>De esta forma, se habrá creado la carpeta <code>www</code> con los archivos necesarios para poder realizar un despliegue de la aplicación.</p>
 </div>
-<div class="exampleblock">
-<div class="content">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<strong>Para que funcione correctamente el script de <code>ionic start</code> es necesario que la ruta actual no contenga espacios ni caracteres especiales</strong>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Crearemos una aplicación con menú y que utilice Capacitor:</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Ahora podemos añadir diferentes plataformas objetivo para que Capacitor configure su despliegue. Añadiremos las plataformas iOS y Android:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ ionic start myAppMenu sidemenu --type=angular --capacitor</code></pre>
+<pre class="highlight"><code>$ npx cap add ios
+$ npx cap add android</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Desplegaremos la aplicación:</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>No ejecutaremos los comandos sugeridos por la salida de consola para abrir Xcode o Android Studio.</p>
+</div>
+<div class="paragraph">
+<p>Comprobaremos que la aplicación funciona correctamente mediante la ejecución de:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ cd myAppMenu
-$ ionic serve</code></pre>
+<pre class="highlight"><code>$ ionic serve</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Después de la configuración del despliegue, se mostrará la localización de la aplicación desplegada:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>[INFO] Development server running!
-
-       Local: http://localhost:8100
-
-       Use Ctrl+C to quit this process
-
-[INFO] Browser window opened to http://localhost:8100!</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>La siguiente imagen muestra la aplicación creada:</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./images/myAppMenu.png" alt="myAppMenu" width="600">
-</div>
-</div>
-<div class="paragraph">
-<p>Si al ejecutar el comando <code>ionic serve</code> añadimos el parámetro <code>--lab</code>, podremos visualizar a la vez la aplicación en las plataformas iOS y Android (aunque también podemos activar la visualización en Windows). Cuando lo ejecutemos, nos pedirá la instalación de Ionic Lab en el proyecto. Después de la configuración del despliegue, se mostrará la localización de la aplicación desplegada y la localización del <code>lab</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>[INFO] Development server running!
-
-       Lab: http://localhost:8200
-       Local: http://localhost:8100
-
-       Use Ctrl+C to quit this process
-
-[INFO] Browser window opened to http://localhost:8200!</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>La siguiente imagen muestra la visualización del <code>lab</code>:</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./images/myAppMenu-lab.png" alt="myAppMenuLab" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Otra opción muy práctica es utilizar las <code>Herramientas para desarrolladores</code> de Google Chrome. Para abrir esta opción, pulsamos la tecla <code>F12</code>. En el icono de los dispositivos móviles podemos cambiar el dispositivo objetivo para que se ajuste la resolución y el modo de visualización:</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./images/myAppMenu-nexus.png" alt="myAppMenuNexus" width="400">
-</div>
-</div>
-<div class="paragraph">
-<p>Antes de explorar la documentación para la utilización de los distintos componentes de interfaz de usuario, construiremos una pequeña aplicación de ejemplo.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_aplicación_de_ejemplo_con_ionic">2. Aplicación de ejemplo con Ionic</h2>
+<h2 id="_obtención_de_la_geolocalización_del_dispositivo">2. Obtención de la geolocalización del dispositivo</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>En primer lugar, creamos una aplicación a partir de la plantilla <code>tabs</code> cuyo nombre sea <code>newAppTabs</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ ionic start newAppTabs tabs --type=angular --capacitor</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Si nos fijamos en la estructura del proyecto, podemos ver que se han creado las siguientes carpetas:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>e2e</code>. Contiene las pruebas end-to-end que, a diferencia de las pruebas unitarias que podemos ejecutar con <code>Jasmine</code> y <code>Karma</code>, permiten probar varios componentes a la vez y su funcionamiento derivado de la interacción con el usuario.</p>
-</li>
-<li>
-<p><code>node_modules</code>. Contiene los paquetes de los que depende la aplicación.</p>
-</li>
-<li>
-<p><code>src</code>. Contiene el código fuente de la aplicación.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Además, se ha creado un conjunto de archivos de configuración:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>.gitignore</code>. Especifica los archivos que no deben tenerse en cuenta en la gestión de versiones.</p>
-</li>
-<li>
-<p><code>angular.json</code>. Contiene la configuración de Angular CLI.</p>
-</li>
-<li>
-<p><code>browserslist</code>. Lista de navegadores a tener en cuenta para la generación del código CSS y JavaScript.</p>
-</li>
-<li>
-<p><code>capacitor.config.json</code>. Contiene la configuración de la integración de Ionic Capacitor por plataforma. Similar a <code>config.xml</code> para Cordova.</p>
-</li>
-<li>
-<p><code>ionic.config.json</code>. Contiene la configuración del proyecto Ionic. Su nombre, el tipo, las integraciones configuradas, etc.</p>
-</li>
-<li>
-<p><code>karma.config.json</code>. Establece la configuración para la realización de las pruebas unitarias con Karma.</p>
-</li>
-<li>
-<p><code>package.json</code>. Describe metadatos del proyecto y también especifica sus dependencias.</p>
-</li>
-<li>
-<p><code>package-lock.json</code>. Archivo generador a partir de <code>package.json</code> que contiene el árbol de dependencias completo derivado del mismo.</p>
-</li>
-<li>
-<p><code>tsconfig.json</code>. Establece la configuración mediante la que el compilador de TypeScript realiza la conversión a JavaScript.</p>
-</li>
-<li>
-<p><code>tsconfig.app.json</code>. Configuración específica del directorio <code>app</code> para realizar la conversión de TypeScript a JavaScript.</p>
-</li>
-<li>
-<p><code>tsconfig.spec.json</code>. Configuración específica para la realización de las pruebas.</p>
-</li>
-<li>
-<p><code>tslint.json</code>. Proporciona la configuración de reglas sintácticas y semánticas para TypeScript.</p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_contenido_de_la_carpeta_src">2.1. Contenido de la carpeta <strong>src</strong></h3>
-<div class="paragraph">
-<p>Dentro de la carpeta del código fuente de la aplicación existen los siguientes directorios:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>app</code>. Contiene los módulos y los componentes de la aplicación, además de la especificación de la navegación entre ellos.</p>
-</li>
-<li>
-<p><code>assets</code>. Contiene los recursos utilizados en la aplicación, incluyendo también los iconos y las fuentes.</p>
-</li>
-<li>
-<p><code>environments</code>. Contiene archivos de configuración para diferentes entornos. Por defecto, se definen los entornos de desarrollo (<code>production : false</code>) y producción (<code>production : true</code>).</p>
-</li>
-<li>
-<p><code>theme</code>. Contiene los archivos Sass que permiten personalizar la apariencia de la aplicación. El archivo <code>variables.scss</code> describe variables con colores para diferentes temas o estilos.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Además, se han generado los siguientes archivos:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>global.scss</code>. Especifica los estilos que se aplican de forma global a toda la aplicación.</p>
-</li>
-<li>
-<p><code>index.html</code>. Archivo principal que sirve de punto de entrada para el despliegue de la aplicación en el componente <code>WebView</code>.</p>
-</li>
-<li>
-<p><code>main.ts</code>. Inicia la aplicación, realizando la carga del entorno.</p>
-</li>
-<li>
-<p><code>polyfills.ts</code>. Contiene los polyfills (fragmentos de código que proporcionan funcionalidad moderna en navegadores antiguos o que no soportan cierta funcionalidad de forma nativa) que requiere Angular.</p>
-</li>
-<li>
-<p><code>test.ts</code>. Punto de entrada para la ejecución de las pruebas unitarias haciendo. Realiza la carga de todos los archivos <code>.spec</code>.</p>
-</li>
-<li>
-<p><code>zone-flags.ts</code>. Se utiliza para evitar que se generen ciertos eventos o acciones asíncronas.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Dentro de la carpeta <code>app</code> se crea una carpeta por cada elemento del proyecto (páginas, componentes, servicios, módulos, etc.). En este caso de ejemplo, solo existe una carpeta <code>home</code> con una página que se corresponde con la página de inicio de la aplicación.</p>
-</div>
-<div class="paragraph">
-<p>En las siguientes subsecciones, se describen algunos de los archivos más importantes para comprender la estructura del proyecto Ionic generado.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_el_archivo_src_app_index_html">2.2. El archivo <strong>src &gt; app &gt; index.html</strong></h3>
-<div class="paragraph">
-<p>En este archivo principal se indica la carga del componente raíz, que hay sido especificado con la etiqueta <code>app-root</code>.</p>
+<p>Para la obtención de la geolocalización del dispositivo y su visualización en el aplicación Ionic, modificaremos el componente <code>home</code>. En la definición del componente, debemos hacer uso de la funciones ofrecidas por la API Geolocation de Capacitor (<a href="https://capacitorjs.com/docs/apis/geolocation">enlace</a>). Para ello, modificaremos el archivo <code>home.page.ts</code>:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Archivo <code>src/app/index.html</code></strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-
-&lt;head&gt;
-  &lt;meta charset="utf-8" /&gt;
-  &lt;title&gt;Ionic App&lt;/title&gt;
-
-  &lt;base href="/" /&gt;
-
-  &lt;meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /&gt;
-  &lt;meta name="format-detection" content="telephone=no" /&gt;
-  &lt;meta name="msapplication-tap-highlight" content="no" /&gt;
-
-  &lt;link rel="icon" type="image/png" href="assets/icon/favicon.png" /&gt;
-
-  &lt;!-- add to homescreen for ios --&gt;
-  &lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
-  &lt;meta name="apple-mobile-web-app-status-bar-style" content="black" /&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;app-root&gt;&lt;/app-root&gt; <i class="conum" data-value="1"></i><b>(1)</b>
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Componente raíz</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_el_componente_app_root">2.3. El componente <strong>app-root</strong></h3>
-<div class="paragraph">
-<p>Este componente se encuentra dentro de la carpeta <code>app</code> y se describe mediante los archivos:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>app.component.ts</code></p>
-</li>
-<li>
-<p><code>app.component.html</code></p>
-</li>
-<li>
-<p><code>app.component.scss</code></p>
-</li>
-<li>
-<p><code>app.component.spec.ts</code></p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="_el_archivo_src_app_app_component_ts">2.3.1. El archivo <strong>src &gt; app &gt; app.component.ts</strong></h4>
-<div class="paragraph">
-<p>Este archivo contiene la especificación del componente <code>app-root</code>. En el código, a través del selector, se especifica el nombre de la etiqueta para el componente.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Archivo <code>src/app/app.component.ts</code></strong></p>
+<p><strong>Archivo <code>home.page.ts</code></strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-ts" data-lang="ts">import { Component } from '@angular/core';
+import { Plugins } from '@capacitor/core'; <i class="conum" data-value="1"></i><b>(1)</b>
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-@Component({
-  selector: 'app-root', <i class="conum" data-value="1"></i><b>(1)</b>
-  templateUrl: 'app.component.html', <i class="conum" data-value="2"></i><b>(2)</b>
-  styleUrls: ['app.component.scss'] <i class="conum" data-value="3"></i><b>(3)</b>
-})
-export class AppComponent { <i class="conum" data-value="4"></i><b>(4)</b>
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar
-  ) {
-    this.initializeApp();
-  }
-
-  initializeApp() {
-    this.platform.ready().then(() =&gt; {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
-}</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Nombre del componente</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Descripción del contenido</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Descripción del estilo</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Nombre de la clase del componente</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_el_archivo_src_app_app_component_html">2.3.2. El archivo <strong>src &gt; app &gt; app.component.html</strong></h4>
-<div class="paragraph">
-<p>Este archivo contiene el componente raíz contenedor de la aplicación.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Archivo <code>src/app/app.component.html</code></strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-html" data-lang="html">&lt;ion-app&gt; <i class="conum" data-value="1"></i><b>(1)</b>
-  &lt;ion-router-outlet&gt;&lt;/ion-router-outlet&gt; <i class="conum" data-value="2"></i><b>(2)</b>
-&lt;/ion-app&gt;</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Componente contenedor de la aplicación</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Enrutador por defecto de Ionic que es luego reemplazado por los enrutadores que definamos en la aplicación</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_el_archivo_src_app_app_component_scss">2.3.3. El archivo <strong>src &gt; app &gt; app.component.scss</strong></h4>
-<div class="paragraph">
-<p>Este archivo se utiliza para describir los estilos comunes a toda la aplicación.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_el_archivo_src_app_app_component_spec_ts">2.3.4. El archivo <strong>src &gt; app &gt; app.component.spec.ts</strong></h4>
-<div class="paragraph">
-<p>Este archivo contiene las pruebas unitarias que se realizan en la aplicación (por ejemplo, que su componente principal <code>app-root</code> descrito por la clase <code>AppComponent</code> se crea y se inicializa correctamente).</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_el_archivo_src_app_app_module_ts">2.4. El archivo <strong>src &gt; app &gt; app.module.ts</strong></h3>
-<div class="paragraph">
-<p>Debido a que la aplicación Ionic es el tipo Angular, los componentes, proveedores de servicios y directivas, deben ser declaradas en este archivo.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Archivo <code>src/app/app.module.ts</code></strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ts" data-lang="ts">import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component'; <i class="conum" data-value="1"></i><b>(1)</b>
-
-@NgModule({
-  declarations: [AppComponent], <i class="conum" data-value="2"></i><b>(2)</b>
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent] <i class="conum" data-value="3"></i><b>(3)</b>
-})
-export class AppModule {}</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Importación del componente</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Declaración de los componentes del módulo</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Ejecución del componente en la carga del módulo</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_el_archivo_src_app_app_routing_module_ts">2.5. El archivo <strong>src &gt; app &gt; app-routing.module.ts</strong></h3>
-<div class="paragraph">
-<p>Describe el enrutamiento (navegación) de la aplicación. En la ruta por defecto o vacía (<code>path : ''</code>) se realiza una carga del módulo declarado en <code>tabs.module.ts</code>.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Archivo <code>src/app/app-routing.module.ts</code></strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ts" data-lang="ts">import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: '', <i class="conum" data-value="1"></i><b>(1)</b>
-    loadChildren: () =&gt; import('./tabs/tabs.module').then(m =&gt; m.TabsPageModule) <i class="conum" data-value="2"></i><b>(2)</b>
-  }
-];
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Ruta por defecto a la aplicación</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Carga del módulo <code>tabs.module.ts</code></td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_el_componente_src_app_explore_container">2.6. El componente <strong>src &gt; app &gt; explore-container</strong></h3>
-<div class="paragraph">
-<p>Al igual que hemos visto para el contenedor de la aplicación, todos los componentes se definen por los mismos cuatro tipos de archivos. En el caso del componente <code>explore-container</code> son:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>explore-container.component.ts</code></p>
-</li>
-<li>
-<p><code>explore-container.component.html</code></p>
-</li>
-<li>
-<p><code>explore-container.component.scss</code></p>
-</li>
-<li>
-<p><code>explore-container.component.spec.ts</code></p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="_el_archivo_explore_container_component_ts">2.6.1. El archivo <strong>explore-container.component.ts</strong></h4>
-<div class="paragraph">
-<p>Este archivo contiene la especificación del componente <code>app-explore-container</code>. En el código, a través del selector, se especifica el nombre de la etiqueta para el componente.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Archivo <code>explore-container/explore-container.component.ts</code></strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ts" data-lang="ts">import { Component, OnInit, Input } from '@angular/core';
+const { Geolocation } = Plugins; <i class="conum" data-value="2"></i><b>(2)</b>
 
 @Component({
-  selector: 'app-explore-container', <i class="conum" data-value="1"></i><b>(1)</b>
-  templateUrl: './explore-container.component.html', <i class="conum" data-value="2"></i><b>(2)</b>
-  styleUrls: ['./explore-container.component.scss'], <i class="conum" data-value="3"></i><b>(3)</b>
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
-export class ExploreContainerComponent implements OnInit { <i class="conum" data-value="4"></i><b>(4)</b>
-  @Input() name: string; <i class="conum" data-value="5"></i><b>(5)</b>
+export class HomePage {
 
-  constructor() { }
+  latitude: number; <i class="conum" data-value="3"></i><b>(3)</b>
+  longitude: number;
+  accuracy: number;
 
-  ngOnInit() {} <i class="conum" data-value="6"></i><b>(6)</b>
+  constructor() {
+
+    this.getLocation(); <i class="conum" data-value="4"></i><b>(4)</b>
+
+  }
+
+  async getLocation() { <i class="conum" data-value="5"></i><b>(5)</b>
+    const position = await Geolocation.getCurrentPosition(); <i class="conum" data-value="6"></i><b>(6)</b>
+    this.latitude = position.coords.latitude;
+    this.longitude = position.coords.longitude;
+    this.accuracy = position.coords.accuracy;
+  }
 
 }</code></pre>
 </div>
@@ -1296,205 +782,235 @@ export class ExploreContainerComponent implements OnInit { <i class="conum" data
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Nombre del componente</td>
+<td>Importación del objeto <code>Plugins</code>, que contiene el registro de todos los plugins de Capacitor</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Descripción del contenido</td>
+<td>Obtención del plugin <code>Geolocation</code> a partir del registro de plugins</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Descripción del estilo</td>
+<td>Creación de propiedades para representar la latitud, la longitud y la precisión</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Nombre de la clase del componente. Hereda de OnInit para poder añadir funcionalidad en la inicialización del componente</td>
+<td>Llamada al método <code>getLocation()</code> en el constructor</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Propiedad de entrada del componente para establecer un nombre mediante el código <code>&lt;app-explore-container name="valordelnombre"&gt;</code></td>
+<td>Declaración del método <code>getLocation()</code> de forma asíncrona (<code>async</code>)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Método para añadir funcionalidad en la inicialización del componente tras la vinculación de las propiedades (<em>data binding</em>)</td>
+<td>La ejecución del método se debe esperar hasta que finalice la ejecución de la operación <code>getCurrentPosition()</code></td>
 </tr>
 </table>
 </div>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Para poder ejecutar métodos de forma asíncrona se hace uso del patrón <code>async</code> / <code>await</code> (ver el siguiente <a href="https://blog.logrocket.com/async-await-in-typescript/">enlace</a>).
+</td>
+</tr>
+</table>
 </div>
-<div class="sect3">
-<h4 id="_el_archivo_explore_container_component_html">2.6.2. El archivo <strong>explore-container.component.html</strong></h4>
 <div class="paragraph">
-<p>Este archivo establece la descripción del contenido del componente.</p>
+<p>En la plantilla del componente, realizaremos la siguiente modificación para mostrar los valores de la latitud y la longitud:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Archivo <code>explore-container/explore-container.component.html</code></strong></p>
+<p><strong>Archivo <code>home.page.html</code></strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-html" data-lang="html">&lt;div id="container"&gt;
-  &lt;strong&gt;{{ name }}&lt;/strong&gt; <i class="conum" data-value="1"></i><b>(1)</b>
-  &lt;p&gt;Explore <i class="conum" data-value="2"></i><b>(2)</b>
-    &lt;a target="_blank" rel="noopener noreferrer"
-      href="https://ionicframework.com/docs/components"&gt;UI Components&lt;/a&gt; <i class="conum" data-value="3"></i><b>(3)</b>
-  &lt;/p&gt;
-&lt;/div&gt;</code></pre>
+<pre class="highlight"><code class="language-html" data-lang="html">  ...
+
+  &lt;div id="container"&gt;
+
+    &lt;ion-card&gt;
+      &lt;ion-card-header&gt;
+        &lt;ion-card-title&gt;Coordinates&lt;/ion-card-title&gt;
+      &lt;/ion-card-header&gt;
+      &lt;ion-card-content&gt;
+        &lt;ion-item&gt;Latitude: {{ latitude }}&lt;/ion-item&gt;
+        &lt;ion-item&gt;Longitude: {{ longitude }}&lt;/ion-item&gt;
+        &lt;ion-item&gt;Accuracy: {{ accuracy }}&lt;/ion-item&gt;
+      &lt;/ion-card-content&gt;
+    &lt;/ion-card&gt;
+
+  &lt;/div&gt;
+
+&lt;/ion-content&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Al guardar los cambios, la ejecución de la aplicación nos solicitará los permisos para que el navegador pueda obtener la localización de nuestro dispositivo.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_utilización_de_la_cámara_del_dipositivo">3. Utilización de la cámara del dipositivo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El plugin Camera de Capacitor requiere de la instalación de una librería adicional, que es PWA Elements (<a href="https://capacitorjs.com/docs/web/pwa-elements">enlace</a>). Para su instalación, debemos instalar la siguiente dependencia en el proyecto:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>npm install @ionic/pwa-elements</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adicionalmente, debemos modificar el archivo <code>src/main.ts</code> para hacer uso de dicha librería:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Archivo <code>main.ts</code></strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ts" data-lang="ts">import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+import { defineCustomElements } from '@ionic/pwa-elements/loader'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch(err =&gt; console.log(err));
+
+defineCustomElements(window); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Texto obtenido de forma dinámica mediante interpolación desde el modelo del componente. En este caso, se obtiene la propiedad <code>name</code></td>
+<td>Importación de la operación <code>defineCustomElements</code> de PWA Elements</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Texto establecido de forma estática</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Enlace a un recurso web externa que se abrirá en una nueva pestaña del navegador</td>
+<td>Ejecución de la operación <code>defineCustomElements</code> para permitir el uso de algunos plugins de Capacitor en el caso de PWAs</td>
 </tr>
 </table>
 </div>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_el_archivo_explore_container_component_scss">2.6.3. El archivo <strong>explore-container.component.scss</strong></h4>
 <div class="paragraph">
-<p>Este archivo se describen los estilos del componente.</p>
+<p>Para la utilización de la cámara, vamos a utilizar las funciones ofrecidas por la API Camera de Capacitor (<a href="https://capacitor.ionicframework.com/docs/apis/camera/">enlace</a>).</p>
+</div>
+<div class="paragraph">
+<p>Modificaremos la definición del componente <code>home</code>:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Archivo <code>explore-container/explore-container.component.scss</code></strong></p>
+<p><strong>Archivo <code>home.page.ts</code></strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-scss" data-lang="scss">#container {
-  text-align: center;
+<pre class="highlight"><code class="language-ts" data-lang="ts">import { Component } from '@angular/core';
+import { Plugins, CameraResultType } from '@capacitor/core'; <i class="conum" data-value="1"></i><b>(1)</b>
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser'; <i class="conum" data-value="2"></i><b>(2)</b>
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+const { Camera } = Plugins; <i class="conum" data-value="3"></i><b>(3)</b>
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage {
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+  photo: SafeResourceUrl; <i class="conum" data-value="4"></i><b>(4)</b>
 
-  color: #8c8c8c;
+  constructor(private sanitizer: DomSanitizer) {} <i class="conum" data-value="5"></i><b>(5)</b>
 
-  margin: 0;
-}
+  async takePicture() { <i class="conum" data-value="6"></i><b>(6)</b>
+    const image = await Camera.getPhoto({ <i class="conum" data-value="7"></i><b>(7)</b>
+      quality: 100,
+      allowEditing: false,
+      resultType: CameraResultType.Uri
+    });
 
-#container a {
-  text-decoration: none;
+    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image &amp;&amp; (image.webPath)); <i class="conum" data-value="8"></i><b>(8)</b>
+  }
+
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_el_archivo_explore_containter_component_spec_ts">2.6.4. El archivo <strong>explore-containter.component.spec.ts</strong></h4>
-<div class="paragraph">
-<p>Este archivo contiene las pruebas unitarias que se realizan en el componente. Por defecto, se crea una colección con una única prueba que verifica si el componente se crea correctamente.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_el_archivo_explore_container_module_ts">2.6.5. El archivo <strong>explore-container.module.ts</strong></h4>
-<div class="paragraph">
-<p>No es un archivo que forme parte del componente, pero se ha creado para que dicho componente puede ser cargado a partir de este módulo.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Archivo <code>explore-container/explore-container.module.ts</code></strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-ts" data-lang="ts">import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
-
-import { ExploreContainerComponent } from './explore-container.component'; <i class="conum" data-value="1"></i><b>(1)</b>
-
-@NgModule({
-  imports: [ CommonModule, FormsModule, IonicModule],
-  declarations: [ExploreContainerComponent], <i class="conum" data-value="2"></i><b>(2)</b>
-  exports: [ExploreContainerComponent] <i class="conum" data-value="3"></i><b>(3)</b>
-})
-export class ExploreContainerComponentModule {}</code></pre>
-</div>
-</div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Importación del componente</td>
+<td>Importación de los elementos necesarios para hacer uso de <code>Camera</code> de Capacitor</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Declaración de los componentes del módulo</td>
+<td>Importación de <code>DomSanitizer</code> (<a href="https://angular.io/api/platform-browser/DomSanitizer">enlace</a>) para confiar en la dirección de la foto aunque sea obtenida del dispositivo y de <code>SafeResourceUrl</code> (<a href="https://angular.io/api/platform-browser/SafeResourceUrl">enlace</a>) para guardar la dirección de la foto</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Exportación del componente para que pueda ser utilizado en la plantilla de otro componente lo importe</td>
+<td>Obtención del plugin <code>Camera</code> a partir del registro de plugins</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Propiedad para describir la dirección de la foto</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Inyección de <code>DomSanitizer</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Operación <code>takePicture</code> que se ejecuta de forma asíncrona</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Ejecución de <code>getPhoto</code> para obtener la foto del dispositivo. La ejecución de la operación <code>takePicture</code> se espera hasta que finaliza dicha ejecución</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Asignación de la dirección de la foto</td>
 </tr>
 </table>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_las_páginas_tab1_tab2_y_tab3">2.7. Las páginas <strong>tab1</strong>, <strong>tab2</strong> y <strong>tab3</strong></h3>
 <div class="paragraph">
-<p>Una página (<code>page</code>) es un componente al que se le crea un módulo (<code>module</code>) y una definición de navegación (<code>routing.module</code>) de forma similar a la definición del componente principal de la aplicación (<code>app</code>).</p>
-</div>
-<div class="paragraph">
-<p>En esta aplicación, se han creado tres pestañas muy similares.</p>
-</div>
-<div class="paragraph">
-<p>La diferencia se encuentra en la definición del contenido de su correspondiente contenido del componente pestaña (<code>tab1</code>, <code>tab2</code> y <code>tab3</code>) y en el uso que hacen del componente <code>explore-container</code>.</p>
+<p>En la plantilla del componente, realizaremos la siguiente modificación para mostrar un botón que nos permita obtener una foto desde la cámara del dispositivo:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Archivo <code>src/app/tab1/tab1.page.html</code></strong></p>
+<p><strong>Archivo <code>home.page.html</code></strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-html" data-lang="html">&lt;ion-header class=".ion-no-padding" [translucent]="true"&gt;
-  &lt;ion-toolbar&gt;
-    &lt;ion-title&gt;
-      Tab 1
-    &lt;/ion-title&gt;
-  &lt;/ion-toolbar&gt;
-&lt;/ion-header&gt;
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;ion-content&gt;
+  &lt;img alt="Photo" [src]="photo"&gt;  <i class="conum" data-value="1"></i><b>(1)</b>
 
-&lt;ion-content [fullscreen]="true"&gt;
-  &lt;ion-header collapse="condense"&gt;
-    &lt;ion-toolbar&gt;
-      &lt;ion-title size="large"&gt;Tab 1&lt;/ion-title&gt;
-    &lt;/ion-toolbar&gt;
-  &lt;/ion-header&gt;
-
-  &lt;app-explore-container name="Tab 1 page"&gt;&lt;/app-explore-container&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+  &lt;ion-fab vertical="bottom" horizontal="center" slot="fixed"&gt; <i class="conum" data-value="2"></i><b>(2)</b>
+    &lt;ion-fab-button (click)="takePicture()"&gt; <i class="conum" data-value="3"></i><b>(3)</b>
+      &lt;ion-icon name="camera"&gt;&lt;/ion-icon&gt; <i class="conum" data-value="4"></i><b>(4)</b>
+    &lt;/ion-fab-button&gt;
+  &lt;/ion-fab&gt;
 &lt;/ion-content&gt;</code></pre>
 </div>
 </div>
@@ -1502,73 +1018,87 @@ export class ExploreContainerComponentModule {}</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Introducción de la propiedad <code>name</code> del componente a través de un atributo</td>
+<td>Elemento HTML para mostrar una imagen cuyo origen está determinado por la dirección que define la propiedad <code>photo</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Contenedor de botones <code>fab</code> (Floating Action Buttons)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Botón vinculado a la operación <code>takePicture()</code> del componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Icono de una cámara</td>
 </tr>
 </table>
 </div>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_la_página_src_app_tabs">2.8. La página <strong>src &gt; app &gt; tabs</strong></h3>
 <div class="paragraph">
-<p>En la aplicación se crea también un componente de tipo página que contiene y realiza la carga de las pestañas <code>tab1</code>, <code>tab2</code> y <code>tab3</code>.</p>
+<p>Al ejecutar la aplicación, se nos solicitarán los permisos para que el navegador pueda acceder a la cámara de nuestro dispositivo.</p>
 </div>
 <div class="paragraph">
-<p>Para cada pestaña, se establece un icono y una etiqueta.</p>
+<p>Al pulsar el botón, se ejecutará la operación <code>takePicture</code> para abrir el componente de la cámara que se encarga de realizar la operación <code>getPhoto</code>.</p>
 </div>
+<div class="paragraph">
+<p>Cuando seleccionemos una foto como válida (tic verde del componente de la cámara), continuará la ejecución del método <code>takePicture</code>, de forma que se actualizará el valor de la propiedad <code>photo</code> y se mostrará en la vista del componente. Se mostrará detrás del botón, por el tipo de botón especificado (FAB).</p>
+</div>
+<div class="paragraph">
+<p>Es necesario recordar que el despliegue de la aplicación en las plataformas iOS y Android requiere la realización de configuraciones adicionales. Para ello, se debe consultar la documentación del plugin Camera de Capacitor (<a href="https://capacitorjs.com/docs/apis/camera">enlace</a>).</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ejercicio_modificación_de_la_aplicación">3. Ejercicio: Modificación de la aplicación</h2>
+<h2 id="_uso_otras_funcionalidades_nativas">4. Uso otras funcionalidades nativas</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Como ejercicio, se propone llevar a cabo una modificación de la aplicación creada para que se cumplan las siguientes características:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Las pestañas deben referirse a:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Home</p>
-</li>
-<li>
-<p>List</p>
-</li>
-<li>
-<p>Action</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Los iconos de acceso a las pestañas deber ser diferentes a los generados en la aplicación de forma automática. Por ejemplo, una casa, una lista y una rueda de un mecanismo.</p>
-</li>
-<li>
-<p>Los contenidos de cada pestaña, deben mostrar un nombre o título en negrita y luego un texto con una descripción</p>
-</li>
-<li>
-<p>Los textos de las tres pestañas deben aparecer exactamente a la misma altura en la mitad del componente y centrados.</p>
-</li>
-</ul>
+<p>Para profundizar en el uso de funcionalidades nativas en aplicaciones Ionic, se recomienda probar el uso de <code>Toast</code> (<a href="https://capacitorjs.com/docs/apis/toast">enlace</a>) y de <code>Modals</code> (<a href="https://capacitorjs.com/docs/apis/modals">enlace</a>), comparando la visualización obtenida en diferentes plataformas.</p>
 </div>
 <div class="paragraph">
-<p>El aspecto de la aplicación debe ser parecido al que se muestra en la siguiente imagen:</p>
+<p>También resulta interesante analizar las posibles limitaciones que se producen al ejecutar una aplicación mediante el uso de <code>ionic serve --lab</code>.</p>
 </div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./images/newAppTabs.png" alt="newAppTabs" width="400">
 </div>
+</div>
+<div class="sect1">
+<h2 id="_ejercicio_creación_de_una_aplicación_ionic_con_funciones_nativas">5. Ejercicio: Creación de una aplicación Ionic con funciones nativas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Como ejercicio, se debe crear una aplicación que tenga las siguientes características:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>El inicio de la aplicación muestra una página con un texto descriptivo (que resuma el funcionamiento de la aplicación) y dos botones que nos permite acceder a dos nuevas páginas.</p>
+</li>
+<li>
+<p>La primera nueva página tiene un botón para poder obtener una foto de la cámara del dispositivo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hasta que no se obtenga ninguna foto desde el dispositivo, se debe mostrar una imagen que describa que todavía no ha sido obtenida ninguna foto como, por ejemplo, la imagen del siguiente <a href="https://pngimage.net/wp-content/uploads/2018/05/empty-image-png-7.png">enlace</a>.</p>
+</li>
+<li>
+<p>Al obtenerse la foto, debe mostrarse dicha foto y debajo un texto que especifique la geolocalización (longitud y latitud) en la que se ha obtenido la foto.</p>
+</li>
+<li>
+<p>La operación que se encarga de obtener la geolocalización debe ejecutarse mediante el uso de un servicio Angular.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>La segunda nueva página muestra un listado de prueba con algunos elementos. Al realizar una interacción con el listado, debe mostrarse un mensaje que avise al usuario de que esa parte de la aplicación está "En construcción".</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-27 14:38:16 +0100
+Last updated 2021-03-16 13:07:04 +0100
 </div>
 </div>
 </body>
