@@ -1341,8 +1341,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -1370,8 +1368,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     AngularFireStorageModule, <i class="conum" data-value="6"></i><b>(6)</b>
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
     { provide: FirestoreSettingsToken, useValue: {} }, <i class="conum" data-value="7"></i><b>(7)</b>
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
@@ -1599,12 +1595,12 @@ export class ProductsPage implements OnInit {
 <p>Cuando se accede a la ruta <code>/products</code> desde la página de <code>login</code> debemos obtener aquellos productos que se encuentran asociados en la base de datos al usuario que ha accedido a la aplicación. Por ello, es necesario crear un servicio que se encargue de resolver esta lista de productos para incorporar dicha información al enrutamiento.</p>
 </div>
 <div class="paragraph">
-<p>Este tipo de archivos suelen describrirse dentro del módulo que necesita la resolución en el acceso a las rutas de dicho módulo (ver <a href="https://angular.io/guide/router#resolve-guard">enlace</a>). Crearemos el servicio <code>products/products-resolve.service.ts</code>:</p>
+<p>Este tipo de archivos suelen describrirse dentro del módulo que necesita la resolución en el acceso a las rutas de dicho módulo (ver <a href="https://angular.io/api/router/Resolve">enlace</a>). Crearemos el servicio <code>products/products-resolver.service.ts</code>:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Archivo <code>products/products-resolve.service.ts</code></strong></p>
+<p><strong>Archivo <code>products/products-resolver.service.ts</code></strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1938,7 +1934,7 @@ export class AddProductPageModule {}</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-23 13:32:46 +0100
+Last updated 2021-03-24 12:44:48 +0100
 </div>
 </div>
 </body>
