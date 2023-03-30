@@ -1512,33 +1512,7 @@ Executed 1 of 1 spec (1 FAILED) in 4 secs.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-ts" data-lang="ts">import { browser, element, by, ExpectedConditions } from "protractor";
-import { HomePage } from "./home.po"; <i class="conum" data-value="1"></i><b>(1)</b>
-import { NewPage } from "./new-page.po";
-
-describe("home tests", () =&gt; { <i class="conum" data-value="2"></i><b>(2)</b>
-
-  let home: HomePage;
-  let newp: NewPage;
-
-  beforeEach(() =&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
-    home = new HomePage();
-    newp = new NewPage();
-  });
-
-  it("the navigation to the new page sends the word", () =&gt; { <i class="conum" data-value="4"></i><b>(4)</b>
-    home.navigateTo(); <i class="conum" data-value="5"></i><b>(5)</b>
-    home.enterText("test text"); <i class="conum" data-value="6"></i><b>(6)</b>
-    browser.driver.sleep(2000);
-    home.clickNewPage(); <i class="conum" data-value="7"></i><b>(7)</b>
-    browser.driver.sleep(500); <i class="conum" data-value="8"></i><b>(8)</b>
-    expect(newp.getLabelWord()).toContain('test text'); <i class="conum" data-value="9"></i><b>(9)</b>
-
-  });
-
-});
-
-describe('Home Tests', () =&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="highlight"><code class="language-ts" data-lang="ts">describe('Home Tests', () =&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
 
   beforeEach(() =&gt; { <i class="conum" data-value="2"></i><b>(2)</b>
     cy.visit('/');
@@ -1602,7 +1576,7 @@ describe('Home Tests', () =&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-29 14:03:14 +0200
+Last updated 2023-03-30 09:15:38 +0200
 </div>
 </div>
 </body>
