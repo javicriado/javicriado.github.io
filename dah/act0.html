@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="generator" content="Asciidoctor 2.0.12">
 <meta name="author" content="Desarrollo de Aplicaciones Híbridas&#8201;&#8212;&#8201;Máster TAII&#8201;&#8212;&#8201;UAL">
 <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
 <title>Desarrollo de una aplicación híbrida con Ionic</title>
@@ -672,7 +672,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div class="ulist">
 <ul>
 <li>
-<p>Instalaremos la última versión LTS de Node.js (<a href="https://nodejs.org/es/">enlace</a>).</p>
+<p>Instalaremos la última versión LTS de Node.js (<a href="https://nodejs.org/en/">enlace</a>).</p>
 </li>
 </ul>
 </div>
@@ -682,10 +682,10 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ node -v
-v18.14.2
+v20.11.1
 
 $ npm -v
-9.5.0</code></pre>
+10.2.4</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -710,17 +710,17 @@ $ npm -v
 
 Ionic:
 
-   Ionic CLI : 6.20.8
+   Ionic CLI : 7.2.0
 
 Utility:
 
    cordova-res : 0.15.4
-   native-run  : 1.7.1
+   native-run  : 2.0.1
 
 System:
 
-   NodeJS : v18.14.2
-   npm    : 9.5.0
+   NodeJS : v20.11.1
+   npm    : 10.2.4
    OS     : Windows 10</code></pre>
 </div>
 </div>
@@ -769,6 +769,9 @@ System:
 <div class="ulist">
 <ul>
 <li>
+<p>Más adelante veremos la diferencia entre crear el proyecto utilizando <code>NgModules</code> o <code>Standalone Components</code>. Para este primer ejemplo, seleccionaremos la opción por defecto de <code>NgModules</code>.</p>
+</li>
+<li>
 <p>Desplegaremos la aplicación:</p>
 </li>
 </ul>
@@ -802,30 +805,7 @@ $ ionic serve</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Si al ejecutar el comando <code>ionic serve</code> añadimos el parámetro <code>--lab</code>, podremos visualizar a la vez la aplicación en las plataformas iOS y Android (aunque también podemos activar la visualización en Windows). Cuando lo ejecutemos, nos pedirá la instalación de Ionic Lab en el proyecto. Después de la configuración del despliegue, se mostrará la localización de la aplicación desplegada y la localización del <code>lab</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>[INFO] Development server running!
-
-       Lab: http://localhost:8200
-       Local: http://localhost:8100
-
-       Use Ctrl+C to quit this process
-
-[INFO] Browser window opened to http://localhost:8200!</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>La siguiente imagen muestra la visualización del <code>lab</code>:</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./images/myAppMenu-lab-v2.png" alt="myAppMenuLab" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Otra opción muy práctica es utilizar las <code>Herramientas para desarrolladores</code> de Google Chrome. Para abrir esta opción, pulsamos la tecla <code>F12</code>. En el icono de los dispositivos móviles podemos cambiar el dispositivo objetivo para que se ajuste la resolución y el modo de visualización:</p>
+<p>Una opción muy práctica es utilizar las <code>Herramientas para desarrolladores</code> de Google Chrome. Para abrir esta opción, pulsamos la tecla <code>F12</code>. En el icono de los dispositivos móviles podemos cambiar el dispositivo objetivo para que se ajuste la resolución y el modo de visualización:</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -841,11 +821,11 @@ $ ionic serve</code></pre>
 <h2 id="_aplicación_de_ejemplo_con_ionic">2. Aplicación de ejemplo con Ionic</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>En primer lugar, creamos una aplicación a partir de la plantilla <code>tabs</code> cuyo nombre sea <code>newAppTabs</code>:</p>
+<p>En primer lugar, creamos una aplicación a partir de la plantilla <code>tabs</code> cuyo nombre sea <code>myAppTabs</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ ionic start newAppTabs tabs --type=angular --capacitor</code></pre>
+<pre class="highlight"><code>$ ionic start myAppTabs tabs --type=angular --capacitor</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -853,6 +833,9 @@ $ ionic serve</code></pre>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>.vscode</code>: Archivos de configuración de Visual Studio Code.</p>
+</li>
 <li>
 <p><code>node_modules</code>: Contiene los paquetes de los que depende la aplicación.</p>
 </li>
@@ -873,7 +856,7 @@ $ ionic serve</code></pre>
 <p><code>.editorconfig</code>: Indica la configuración para la edición y visualización de los archivos de texto del proyecto.</p>
 </li>
 <li>
-<p><code>.eslintrc.json</code>: Permite configurar <a href="https://eslint.org/">ESLint</a>.</p>
+<p><code>.eslintrc.json</code>: Permite configurar <a href="https://eslint.org/">ESLint</a> para el análisis del código y la solución rápida de problemas.</p>
 </li>
 <li>
 <p><code>.gitignore</code>: Especifica los archivos que no deben tenerse en cuenta en la gestión de versiones.</p>
@@ -954,7 +937,7 @@ $ ionic serve</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Dentro de la carpeta <code>app</code> se crea una carpeta por cada elemento del proyecto (páginas, componentes, servicios, módulos, etc.). En este caso de ejemplo, solo existe una carpeta <code>home</code> con una página que se corresponde con la página de inicio de la aplicación.</p>
+<p>Dentro de la carpeta <code>app</code> se crea una carpeta por cada elemento del proyecto (páginas, componentes, servicios, módulos, etc.).</p>
 </div>
 <div class="paragraph">
 <p>En las siguientes subsecciones, se describen algunos de los archivos más importantes para comprender la estructura del proyecto Ionic generado.</p>
@@ -1130,7 +1113,7 @@ export class AppComponent { <i class="conum" data-value="4"></i><b>(4)</b>
 <div class="sect2">
 <h3 id="_el_archivo_src_app_app_module_ts">2.4. El archivo <strong>src &gt; app &gt; app.module.ts</strong></h3>
 <div class="paragraph">
-<p>Debido a que la aplicación Ionic es el tipo Angular, los componentes, proveedores de servicios y directivas, deben ser declaradas en este archivo.</p>
+<p>Debido a que la aplicación Ionic es de tipo Angular y basada en <code>NgModules</code> en lugar de <code>Standalone Components</code>, los componentes, proveedores de servicios y directivas, deben ser declaradas en este archivo.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1527,7 +1510,7 @@ export class ExploreContainerComponentModule {}</code></pre>
 <p>Los contenidos de cada pestaña, deben mostrar un nombre o título en negrita y luego un texto con una descripción</p>
 </li>
 <li>
-<p>Los textos de las tres pestañas deben aparecer exactamente a la misma altura en la mitad del componente y centrados.</p>
+<p>Los textos de las tres pestañas deben aparecer exactamente a la misma altura, tres píxeles por debajo de la mitad del componente y centrados.</p>
 </li>
 </ul>
 </div>
@@ -1544,7 +1527,7 @@ export class ExploreContainerComponentModule {}</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-23 11:18:19 +0100
+Last updated 2024-02-16 14:11:09 +0100
 </div>
 </div>
 </body>

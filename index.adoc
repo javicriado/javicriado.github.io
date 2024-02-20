@@ -16,10 +16,6 @@ Ingeniería del Software
 
 Desarrollo de Interfaces de Usuario
 
-Integración de Tecnologías y Servicios Informáticos
-
-Planificación y Gestión de Proyectos Informáticos
-
 https://javicriado.github.io/dah[Desarrollo de Aplicaciones Híbridas]
 
 Desarrollo Web Basado en Servicios y Componentes
