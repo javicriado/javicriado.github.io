@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="generator" content="Asciidoctor 2.0.12">
 <meta name="author" content="Desarrollo de Aplicaciones Híbridas&#8201;&#8212;&#8201;Máster TAII&#8201;&#8212;&#8201;UAL">
 <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
 <title>Pruebas en aplicaciones Ionic</title>
@@ -661,14 +661,15 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <li><a href="#_ejecución_de_las_pruebas_unitarias">2.3. Ejecución de las pruebas unitarias</a></li>
 </ul>
 </li>
-<li><a href="#_uso_de_protractor_para_la_ejecución_de_pruebas_e2e">3. Uso de Protractor para la ejecución de pruebas E2E</a></li>
-<li><a href="#_uso_de_cypress_para_la_ejecución_de_pruebas_e2e">4. Uso de Cypress para la ejecución de pruebas E2E</a></li>
-<li><a href="#_solución_de_problemas">5. Solución de problemas</a>
+<li><a href="#_uso_de_cypress_para_la_ejecución_de_pruebas_unitarias">3. Uso de Cypress para la ejecución de pruebas unitarias</a></li>
+<li><a href="#_uso_de_protractor_para_la_ejecución_de_pruebas_e2e">4. Uso de Protractor para la ejecución de pruebas E2E</a></li>
+<li><a href="#_uso_de_cypress_para_la_ejecución_de_pruebas_e2e">5. Uso de Cypress para la ejecución de pruebas E2E</a></li>
+<li><a href="#_solución_de_problemas">6. Solución de problemas</a>
 <ul class="sectlevel2">
-<li><a href="#_problema_1">5.1. Problema 1</a></li>
+<li><a href="#_problema_1">6.1. Problema 1</a></li>
 </ul>
 </li>
-<li><a href="#_ejercicio_realización_de_pruebas_unitarias_y_e2e_en_una_aplicación_ionic">6. Ejercicio: Realización de pruebas unitarias y E2E en una aplicación Ionic</a></li>
+<li><a href="#_ejercicio_realización_de_pruebas_unitarias_y_e2e_en_una_aplicación_ionic">7. Ejercicio: Realización de pruebas unitarias y E2E en una aplicación Ionic</a></li>
 </ul>
 </div>
 </div>
@@ -710,7 +711,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <p>La escritura adicional del código para la ejecución de pruebas unitarias favorece no solo la verificación del código en el momento que se está desarrollando, sino que también sirve para la ejecución de pruebas de regresión cuando se realiza alguna modificación en otras partes de la aplicación. De forma adicional, el código de las pruebas unitarias sirve como parte de la documentación del software, al describir cuál es la funcionalidad que se quiere obtener al ejecutar la aplicación.</p>
 </div>
 <div class="paragraph">
-<p>Para la ejecución de las pruebas unitarias, vamos a hacer uso de Jasmine (<a href="https://jasmine.github.io/">enlace</a>) y de Karma (<a href="https://karma-runner.github.io/latest/index.html">enlace</a>).</p>
+<p>Para la ejecución de las pruebas unitarias, vamos a hacer uso de Cypress (<a href="https://www.cypress.io/">enlace</a>), aunque antes revisaremos cómo poder llevar a cabo este tipo de pruebas con Jasmine (<a href="https://jasmine.github.io/">enlace</a>) y Karma (<a href="https://karma-runner.github.io/latest/index.html">enlace</a>).</p>
 </div>
 </div>
 <div class="sect2">
@@ -1166,7 +1167,169 @@ describe('HomePage', () =&gt; {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_uso_de_protractor_para_la_ejecución_de_pruebas_e2e">3. Uso de Protractor para la ejecución de pruebas E2E</h2>
+<h2 id="_uso_de_cypress_para_la_ejecución_de_pruebas_unitarias">3. Uso de Cypress para la ejecución de pruebas unitarias</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cypress es una herramienta que permite la automatización de pruebas de extremo a extremo (E2E) y de integración. Además, permite la realización de pruebas unitarias. Para la ejecución de pruebas unitarias con Cypress, se debe instalar la dependencia en el proyecto:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ npm install --save-dev cypress</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Una vez instalada, se puede ejecutar la herramienta con el siguiente comando:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ npx cypress open</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En la ventana de configuración que se abre, seleccionaremos la opción <code>Component Testing</code>. A continuación, debemos seleccionar el framework de desarrollo utilizado para el front-end. En este caso, seleccionaremos <code>Angular</code> y avanzaremos en la configuración mediante <code>Next step</code>. Se nos informará sobre las dependencias necesarias y seleccionaremos <code>Continue</code>. Finalmente, se nos mostrará una lista de los archivos de configuración de Cypress que existen en el proyecto. Seleccionamos <code>Continue</code> y en la siguiente ventana podemos seleccionar el navegador en el que se ejecutarán las pruebas.</p>
+</div>
+<div class="paragraph">
+<p>Una vez seleccionado el navegador, podemos crear las pruebas unitarias que deseemos mediante la selección de <code>New spec</code>.</p>
+</div>
+<div class="paragraph">
+<p>Crearemos una prueba para el componente <code>home</code> que compruebe que el componente ha sido creado correctamente y que el título del componente es el esperado. Además, en dicha prueba, también comprobaremos que el componente contiene un botón que permite cambiar el título del componente. Finalmente, también incluiremos las pruebas relacionadas con el servicio <code>generate-text</code> que hemos creado anteriormente y que se inyecta en el componente <code>home</code>.</p>
+</div>
+<div class="paragraph">
+<p>Para ello, crearemos un archivo (spec) indicando la ruta <code>src\app\home\home.page.cy.ts</code> y seleccionando <code>Create spec</code>. El archivo encargado de la prueba del componente <code>home</code> tendrá el siguiente contenido:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Archivo <code>src/app/home/home.page.cy.ts</code></strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ts" data-lang="ts">import { HomePage } from 'src/app/home/home.page';
+
+describe('HomePage', () =&gt; {
+
+  it('should create', () =&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
+    cy.mount(HomePage).then(wrapper =&gt; {
+      expect(wrapper.component).not.to.be.undefined;
+    });
+  });
+
+  it('initialize the component with a specific title', () =&gt; { <i class="conum" data-value="2"></i><b>(2)</b>
+    cy.mount(HomePage).then(wrapper =&gt; {
+      expect(wrapper.component.title).to.equal('Home Page');
+    });
+  });
+
+  it('can set the title to a supplied value', () =&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
+    cy.mount(HomePage).then(wrapper =&gt; {
+      wrapper.component.changeTitle('New Title');
+      expect(wrapper.component.title).to.equal('New Title');  <i class="conum" data-value="4"></i><b>(4)</b>
+    });
+    cy.get('ion-title').should('contain', 'Home Page'); <i class="conum" data-value="5"></i><b>(5)</b>
+  });
+
+  it('initialize the component with a specific word', () =&gt; { <i class="conum" data-value="6"></i><b>(6)</b>
+    cy.mount(HomePage).then(wrapper =&gt; {
+      expect(wrapper.component.word).to.equal('initial word');
+    });
+  });
+
+  it('can get a random word', () =&gt; { <i class="conum" data-value="7"></i><b>(7)</b>
+    cy.mount(HomePage).then(wrapper =&gt; {
+      wrapper.component.getWord();
+      expect(wrapper.component.word).not.to.equal('initial word');
+    });
+  });
+
+  it("has a GenerateTextService that should return a non-empty array", () =&gt; { <i class="conum" data-value="8"></i><b>(8)</b>
+    cy.mount(HomePage).then(wrapper =&gt; {
+      expect(wrapper.component.testservice.words).to.be.an('array').that.is.not.empty;
+    });
+  });
+
+  it("has a GenerateTextService that should return a random word", () =&gt; { <i class="conum" data-value="9"></i><b>(9)</b>
+    cy.mount(HomePage).then(wrapper =&gt; {
+      expect(wrapper.component.testservice.getRandomWord()).to.be.a('string');
+    });
+  });
+
+  it("has a GenerateTextService that should have 'DAH' and 'service' in the list of words", () =&gt; { <i class="conum" data-value="10"></i><b>(10)</b>
+    cy.mount(HomePage).then(wrapper =&gt; {
+      let words = wrapper.component.testservice.words;
+      expect(words).to.include('DAH');
+      expect(words).to.include('service');
+    });
+  });
+
+})</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>El componente se ha creado correctamente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>El título del componente es el esperado</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>El componente tiene una operación para cambiar el título</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Comprobación del nuevo título del componente</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Comprobación del título del componente en la vista</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>El componente se ha creado con una palabra inicial</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>El componente tiene una operación para obtener una nueva palabra de forma aleatoria entre un array de palabras. Dicha palabra no es la inicial.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>El componente tiene un servicio que devuelve un array de palabras no vacío</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>El componente tiene un servicio que devuelve una palabra de forma aleatoria que es de tipo string</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>El componente tiene un servicio que devuelve un array de palabras que contiene dos palabras concretas</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Para ejecutar las pruebas unitarias con Cypress, debemos ejecutar el archivo de pruebas (<code>spec</code>) creado haciendo clic en él en la ventana de Cypress. Como resultado, se abrirá el navegador para llevar a cabo la interacción implementada. Al finalizar la realización de las pruebas, se nos mostrará un resumen de la ejecución.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/act5-cypress-ct.png" alt="test" width="450">
+</div>
+</div>
+<div class="paragraph">
+<p>En el caso de que alguna de las pruebas falle, se aportará la información correspondiente. Por ejemplo, en el siguiente caso, el título del componente no coincide con el título esperado:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./images/act5-cypress-ct-fail.png" alt="test-fail" width="450">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_uso_de_protractor_para_la_ejecución_de_pruebas_e2e">4. Uso de Protractor para la ejecución de pruebas E2E</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Para la ejecución de las pruebas E2E, podemos hacer usos de distintas alternativas. En este caso, vamos a hacer uso de Protractor para controlar el navegador y las acciones de interacción realizadas. Jasmine se utiliza para la construcción y ejecución de las pruebas.</p>
@@ -1489,7 +1652,7 @@ Executed 1 of 1 spec (1 FAILED) in 4 secs.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_uso_de_cypress_para_la_ejecución_de_pruebas_e2e">4. Uso de Cypress para la ejecución de pruebas E2E</h2>
+<h2 id="_uso_de_cypress_para_la_ejecución_de_pruebas_e2e">5. Uso de Cypress para la ejecución de pruebas E2E</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Cypress es una herramienta de pruebas E2E que permite la ejecución de pruebas en un navegador. Para ello, se debe instalar la dependencia en el proyecto:</p>
@@ -1606,13 +1769,13 @@ export default defineConfig({
 </div>
 </div>
 <div class="sect1">
-<h2 id="_solución_de_problemas">5. Solución de problemas</h2>
+<h2 id="_solución_de_problemas">6. Solución de problemas</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A continuación, se muestra una serie de problemas que se pueden encontrar durante el desarrollo de la aplicación y su solución.</p>
 </div>
 <div class="sect2">
-<h3 id="_problema_1">5.1. Problema 1</h3>
+<h3 id="_problema_1">6.1. Problema 1</h3>
 <div class="paragraph">
 <p>Si se produce un error del tipo <code>Option 'sourceMap' cannot be specified with option 'inlineSourceMap'</code> al realizar la ejecución de los tests en Cypress, se debe modificar el archivo <code>tsconfig.json</code> para eliminar la línea <code>"sourceMap": true</code>.</p>
 </div>
@@ -1620,7 +1783,7 @@ export default defineConfig({
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ejercicio_realización_de_pruebas_unitarias_y_e2e_en_una_aplicación_ionic">6. Ejercicio: Realización de pruebas unitarias y E2E en una aplicación Ionic</h2>
+<h2 id="_ejercicio_realización_de_pruebas_unitarias_y_e2e_en_una_aplicación_ionic">7. Ejercicio: Realización de pruebas unitarias y E2E en una aplicación Ionic</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Se debe crear un nuevo proyecto Ionic que contenga la funcionalidad de la Actividad 1 (ver <a href="https://javicriado.github.io/dah/act1.html">enlace</a>). En dicho proyecto, se deben añadir las pruebas unitarias y E2E necesarias para comprobar la funcionalidad descrita.</p>
@@ -1630,7 +1793,7 @@ export default defineConfig({
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-01 23:23:16 +0200
+Last updated 2024-04-04 13:06:39 +0200
 </div>
 </div>
 </body>
